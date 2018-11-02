@@ -3,7 +3,746 @@
   "error_code": "000000",
   "error_msg": "查询成功",
   "data": {
-
+    "project_info": {
+      "budget_total": "2177560",
+      "chr_id": "{HGPC52C1-BE68-4EE4-9955-E6B43AED0ABC}",
+      "exec_dept_name": "北京市发展和改革局",
+      "prj_code": "000001",
+      "prj_name": "2019年市直财政预算项目"
+    },
+    "kpiSelect_detail_info": {
+      "kpiSelect_table_id": "hgp40983-77ee-486b-92a3-5f8a8030db6c",
+      "kpiSelect_user_id": "{E6BE8909-F454-4695-B878-EF7B6AF10304}",
+      "kpiSelect_user_name": "张老师",
+      "kpiSelect_content": [{
+        "chr_id1": "{041A81AE-4E79-4049-AA7B-E028E0B921D3}",
+        "chr_id2": "{0B12ECD9-296E-4AC2-A474-290A57885A4C}",
+        "chr_id3": "{BC523FEB-6A01-484E-B940-AB82CFEDAC62}",
+        "chr_id4": "",
+        "chr_id5": "",
+        "select_num": 1,
+        "id": "fcba71f4-7c77-45bb-85c4-cc4f4731cc87",
+        "kpi_explain1": "项目绩效",
+        "kpi_explain2": "项目产出",
+        "kpi_explain3": "产出时效",
+        "kpi_explain4": "",
+        "kpi_explain5": "",
+        "kpi_Final": [{
+          "kpi_id": "pcy001",
+          "kpi_name": "平台试运行进度",
+          "kpi_level": "4",
+          "kpi_weight": 0,
+          "kpi_explain": "平台试运行进度：一是部分部门对试运行工作认识不到位，重视程度不够。个别单位至今仍未使用市平台录入业务，办件量为零，严重影响全县整体进度；二是个别部门至今仍未接入全市电子政务网，导致市平台无法登陆使用；三是部分部门业务未全部录入市平台，特别是使用省以上自建系统办理业务的单位，二次录入不及时，存在选择性录入等问题。",
+          "kpi_stand": [{
+            "id": "pcy001001",
+            "kpi_stand_name": "平台试运行进度按计划进行，得2分"
+          }, {
+            "id": "pcy001002",
+            "kpi_stand_name": "平台试运行进度未按计划进行，得0-2分"
+          }],
+          "order_num": 1
+        },{
+          "kpi_id": "pcy002",
+          "kpi_name": "平台试运行进度",
+          "kpi_level": "4",
+          "kpi_weight": 0,
+          "kpi_stand": [{
+            "id": "pcy002001",
+            "kpi_stand_name": "平台试运行进度按计划进行，得2分"
+          }, {
+            "id": "pcy002002",
+            "kpi_stand_name": "平台试运行进度未按计划进行，得0-2分"
+          }],
+          "order_num": 2
+        },{
+          "kpi_id": "pcy003",
+          "kpi_name": "平台试运行进度",
+          "kpi_level": "4",
+          "kpi_weight": 0,
+          "kpi_stand": [{
+            "id": "pcy003001",
+            "kpi_stand_name": "平台试运行进度按计划进行，得2分"
+          }, {
+            "id": "pcy003002",
+            "kpi_stand_name": "平台试运行进度未按计划进行，得0-2分"
+          }],
+          "order_num": 3
+        },{
+          "kpi_id": "pcy004",
+          "kpi_name": "平台试运行进度",
+          "kpi_level": "4",
+          "kpi_weight": 0,
+          "kpi_stand": [{
+            "id": "pcy004001",
+            "kpi_stand_name": "平台试运行进度按计划进行，得2分"
+          }, {
+            "id": "pcy004002",
+            "kpi_stand_name": "平台试运行进度未按计划进行，得0-2分"
+          }],
+          "order_num": 4
+        },{
+          "kpi_id": "pcy005",
+          "kpi_name": "平台试运行进度",
+          "kpi_level": "4",
+          "kpi_weight": 0,
+          "kpi_stand": [{
+            "id": "pcy005001",
+            "kpi_stand_name": "平台试运行进度按计划进行，得2分"
+          }, {
+            "id": "pcy005002",
+            "kpi_stand_name": "平台试运行进度未按计划进行，得0-2分"
+          }],
+          "order_num": 5
+        }],
+        "kpi_name1": "项目绩效",
+        "kpi_name2": "项目产出",
+        "kpi_name3": "产出时效",
+        "kpi_name4": "",
+        "kpi_name5": "",
+        "kpi_weight1": "50",
+        "kpi_weight2": "25",
+        "kpi_weight3": "10",
+        "kpi_weight4": "",
+        "kpi_weight5": "",
+        "value_type": "1"
+      }, {
+        "chr_id1": "{041A81AE-4E79-4049-AA7B-E028E0B921D3}",
+        "chr_id2": "{0B12ECD9-296E-4AC2-A474-290A57885A4C}",
+        "chr_id3": "{BC523FEB-6A01-484E-B940-AB82CFEDAC62}",
+        "chr_id4": "",
+        "chr_id5": "",
+        "select_num": 2,
+        "id": "19a3f8e0-d5c4-49f7-9698-7e769b8eb38d",
+        "kpi_explain1": "项目绩效",
+        "kpi_explain2": "项目产出",
+        "kpi_explain3": "产出时效",
+        "kpi_explain4": "",
+        "kpi_explain5": "",
+        "kpi_name1": "项目绩效",
+        "kpi_name2": "项目产出",
+        "kpi_name3": "产出时效",
+        "kpi_name4": "",
+        "kpi_name5": "",
+        "kpi_Final": [{
+          "kpi_id": "pcy011",
+          "kpi_name": "平台正式运行进度",
+          "kpi_level": "4",
+          "kpi_weight": 0,
+          "kpi_explain": "平台正式运行进度",
+          "kpi_stand": [{
+            "id": "pcy011001",
+            "kpi_stand_name": "平台试运行进度按计划进行，得2分"
+          }, {
+            "id": "pcy011002",
+            "kpi_stand_name": "平台试运行进度未按计划进行，得0-2分"
+          }],
+          "order_num": 1
+        },{
+          "kpi_id": "pcy012",
+          "kpi_name": "平台试运行进度",
+          "kpi_level": "4",
+          "kpi_weight": 0,
+          "kpi_stand": [{
+            "id": "pcy012001",
+            "kpi_stand_name": "平台试运行进度按计划进行，得2分"
+          }, {
+            "id": "pcy012002",
+            "kpi_stand_name": "平台试运行进度未按计划进行，得0-2分"
+          }],
+          "order_num": 2
+        },{
+          "kpi_id": "pcy013",
+          "kpi_name": "平台试运行进度",
+          "kpi_level": "4",
+          "kpi_weight": 0,
+          "kpi_stand": [{
+            "id": "pcy013001",
+            "kpi_stand_name": "平台试运行进度按计划进行，得2分"
+          }, {
+            "id": "pcy013002",
+            "kpi_stand_name": "平台试运行进度未按计划进行，得0-2分"
+          }],
+          "order_num": 3
+        },{
+          "kpi_id": "pcy014",
+          "kpi_name": "平台试运行进度",
+          "kpi_level": "4",
+          "kpi_weight": 0,
+          "kpi_stand": [{
+            "id": "pcy014001",
+            "kpi_stand_name": "平台试运行进度按计划进行，得2分"
+          }, {
+            "id": "pcy014002",
+            "kpi_stand_name": "平台试运行进度未按计划进行，得0-2分"
+          }],
+          "order_num": 4
+        },{
+          "kpi_id": "pcy015",
+          "kpi_name": "平台试运行进度",
+          "kpi_level": "4",
+          "kpi_weight": 0,
+          "kpi_stand": [{
+            "id": "pcy015001",
+            "kpi_stand_name": "平台试运行进度按计划进行，得2分"
+          }, {
+            "id": "pcy015002",
+            "kpi_stand_name": "平台试运行进度未按计划进行，得0-2分"
+          }],
+          "order_num": 5
+        }],
+        "kpi_weight1": "50",
+        "kpi_weight2": "25",
+        "kpi_weight3": "10",
+        "kpi_weight4": "",
+        "kpi_weight5": "",
+        "value_type": "1"
+      }, {
+        "chr_id1": "{041A81AE-4E79-4049-AA7B-E028E0B921D3}",
+        "chr_id2": "{0B12ECD9-296E-4AC2-A474-290A57885A4C}",
+        "chr_id3": "{BC523FEB-6A01-484E-B940-AB82CFEDAC62}",
+        "chr_id4": "",
+        "chr_id5": "",
+        "select_num": 3,
+        "id": "a6e26b53-3b0a-42d5-97cc-16cd9efbbffa",
+        "kpi_explain1": "项目绩效",
+        "kpi_explain2": "项目产出",
+        "kpi_explain3": "产出时效",
+        "kpi_explain4": "",
+        "kpi_explain5": "",
+        "kpi_name": "项目总结进度",
+        "kpi_name1": "项目绩效",
+        "kpi_name2": "项目产出",
+        "kpi_name3": "产出时效",
+        "kpi_name4": "",
+        "kpi_name5": "",
+        "kpi_Final": [{
+          "kpi_id": "pcy021",
+          "kpi_name": "平台正式运行进度",
+          "kpi_level": "4",
+          "kpi_weight": 0,
+          "kpi_explain": "平台正式运行进度",
+          "kpi_stand": [{
+            "id": "pcy021001",
+            "kpi_stand_name": "平台试运行进度按计划进行，得2分"
+          }, {
+            "id": "pcy021002",
+            "kpi_stand_name": "平台试运行进度未按计划进行，得0-2分"
+          }],
+          "order_num": 1
+        },{
+          "kpi_id": "pcy022",
+          "kpi_name": "平台试运行进度",
+          "kpi_level": "4",
+          "kpi_weight": 0,
+          "kpi_stand": [{
+            "id": "pcy022001",
+            "kpi_stand_name": "平台试运行进度按计划进行，得2分"
+          }, {
+            "id": "pcy022002",
+            "kpi_stand_name": "平台试运行进度未按计划进行，得0-2分"
+          }],
+          "order_num": 2
+        },{
+          "kpi_id": "pcy023",
+          "kpi_name": "平台试运行进度",
+          "kpi_level": "4",
+          "kpi_weight": 0,
+          "kpi_stand": [{
+            "id": "pcy023001",
+            "kpi_stand_name": "平台试运行进度按计划进行，得2分"
+          }, {
+            "id": "pcy023002",
+            "kpi_stand_name": "平台试运行进度未按计划进行，得0-2分"
+          }],
+          "order_num": 3
+        },{
+          "kpi_id": "pcy024",
+          "kpi_name": "平台试运行进度",
+          "kpi_level": "4",
+          "kpi_weight": 0,
+          "kpi_stand": [{
+            "id": "pcy024001",
+            "kpi_stand_name": "平台试运行进度按计划进行，得2分"
+          }, {
+            "id": "pcy024002",
+            "kpi_stand_name": "平台试运行进度未按计划进行，得0-2分"
+          }],
+          "order_num": 4
+        }],
+        "kpi_weight1": "50",
+        "kpi_weight2": "25",
+        "kpi_weight3": "10",
+        "kpi_weight4": "",
+        "kpi_weight5": "",
+        "parent_id": "{BC523FEB-6A01-484E-B940-AB82CFEDAC62}",
+        "value_type": "1"
+      }, {
+        "chr_id1": "{041A81AE-4E79-4049-AA7B-E028E0B921D3}",
+        "chr_id2": "{0B12ECD9-296E-4AC2-A474-290A57885A4C}",
+        "chr_id3": "{59F8D02E-2450-4039-908F-6042CB9F5715}",
+        "chr_id4": "",
+        "chr_id5": "",
+        "select_num":4,
+        "id": "8d7bab14-652d-4472-afa4-204e101f593f",
+        "kpi_explain1": "项目绩效",
+        "kpi_explain2": "项目产出",
+        "kpi_explain3": "产出成本",
+        "kpi_explain4": "",
+        "kpi_explain5": "",
+        "kpi_name1": "项目绩效",
+        "kpi_name2": "项目产出",
+        "kpi_name3": "产出成本",
+        "kpi_name4": "",
+        "kpi_name5": "",
+        "kpi_Final": [{
+          "kpi_id": "pcy031",
+          "kpi_name": "平台正式运行进度",
+          "kpi_level": "4",
+          "kpi_weight": 0,
+          "kpi_explain": "平台正式运行进度",
+          "kpi_stand": [{
+            "id": "pcy031001",
+            "kpi_stand_name": "平台试运行进度按计划进行，得2分"
+          }, {
+            "id": "pcy031002",
+            "kpi_stand_name": "平台试运行进度未按计划进行，得0-2分"
+          }],
+          "order_num": 1
+        },{
+          "kpi_id": "pcy032",
+          "kpi_name": "平台试运行进度",
+          "kpi_level": "4",
+          "kpi_weight": 0,
+          "kpi_stand": [{
+            "id": "pcy032001",
+            "kpi_stand_name": "平台试运行进度按计划进行，得2分"
+          }, {
+            "id": "pcy032002",
+            "kpi_stand_name": "平台试运行进度未按计划进行，得0-2分"
+          }],
+          "order_num": 2
+        },{
+          "kpi_id": "pcy033",
+          "kpi_name": "平台试运行进度",
+          "kpi_level": "4",
+          "kpi_weight": 0,
+          "kpi_stand": [{
+            "id": "pcy033001",
+            "kpi_stand_name": "平台试运行进度按计划进行，得2分"
+          }, {
+            "id": "pcy033002",
+            "kpi_stand_name": "平台试运行进度未按计划进行，得0-2分"
+          }],
+          "order_num": 3
+        },{
+          "kpi_id": "pcy034",
+          "kpi_name": "平台试运行进度",
+          "kpi_level": "4",
+          "kpi_weight": 0,
+          "kpi_stand": [{
+            "id": "pcy034001",
+            "kpi_stand_name": "平台试运行进度按计划进行，得2分"
+          }, {
+            "id": "pcy034002",
+            "kpi_stand_name": "平台试运行进度未按计划进行，得0-2分"
+          }],
+          "order_num": 4
+        },{
+          "kpi_id": "pcy035",
+          "kpi_name": "平台试运行进度",
+          "kpi_level": "4",
+          "kpi_weight": 0,
+          "kpi_stand": [{
+            "id": "pcy035001",
+            "kpi_stand_name": "平台试运行进度按计划进行，得2分"
+          }, {
+            "id": "pcy035002",
+            "kpi_stand_name": "平台试运行进度未按计划进行，得0-2分"
+          }],
+          "order_num": 5
+        }],
+        "kpi_weight1": "50",
+        "kpi_weight2": "25",
+        "kpi_weight3": "15",
+        "kpi_weight4": "",
+        "kpi_weight5": "",
+        "parent_id": "{59F8D02E-2450-4039-908F-6042CB9F5715}",
+        "value_type": "1"
+      }, {
+        "chr_id1": "{041A81AE-4E79-4049-AA7B-E028E0B921D3}",
+        "chr_id2": "{0B12ECD9-296E-4AC2-A474-290A57885A4C}",
+        "chr_id3": "{59F8D02E-2450-4039-908F-6042CB9F5715}",
+        "chr_id4": "",
+        "chr_id5": "",
+        "select_num": 5,
+        "id": "6ee21a35-8e4e-47a7-9d34-194709821d65",
+        "kpi_explain1": "项目绩效",
+        "kpi_explain2": "项目产出",
+        "kpi_explain3": "产出成本",
+        "kpi_explain4": "",
+        "kpi_explain5": "",
+        "kpi_name1": "项目绩效",
+        "kpi_name2": "项目产出",
+        "kpi_name3": "产出成本",
+        "kpi_name4": "",
+        "kpi_name5": "",
+        "kpi_Final": [{
+          "kpi_id": "pcy041",
+          "kpi_name": "平台正式运行进度",
+          "kpi_level": "4",
+          "kpi_weight": 0,
+          "kpi_explain": "平台正式运行进度",
+          "kpi_stand": [{
+            "id": "pcy041001",
+            "kpi_stand_name": "平台试运行进度按计划进行，得2分"
+          }, {
+            "id": "pcy041002",
+            "kpi_stand_name": "平台试运行进度未按计划进行，得0-2分"
+          }],
+          "order_num": 1
+        },{
+          "kpi_id": "pcy042",
+          "kpi_name": "平台试运行进度",
+          "kpi_level": "4",
+          "kpi_weight": 0,
+          "kpi_stand": [{
+            "id": "pcy042001",
+            "kpi_stand_name": "平台试运行进度按计划进行，得2分"
+          }, {
+            "id": "pcy042002",
+            "kpi_stand_name": "平台试运行进度未按计划进行，得0-2分"
+          }],
+          "order_num": 2
+        },{
+          "kpi_id": "pcy043",
+          "kpi_name": "平台试运行进度",
+          "kpi_level": "4",
+          "kpi_weight": 0,
+          "kpi_stand": [{
+            "id": "pcy043001",
+            "kpi_stand_name": "平台试运行进度按计划进行，得2分"
+          }, {
+            "id": "pcy043002",
+            "kpi_stand_name": "平台试运行进度未按计划进行，得0-2分"
+          }],
+          "order_num": 3
+        },{
+          "kpi_id": "pcy044",
+          "kpi_name": "平台试运行进度",
+          "kpi_level": "4",
+          "kpi_weight": 0,
+          "kpi_stand": [{
+            "id": "pcy044001",
+            "kpi_stand_name": "平台试运行进度按计划进行，得2分"
+          }, {
+            "id": "pcy044002",
+            "kpi_stand_name": "平台试运行进度未按计划进行，得0-2分"
+          }],
+          "order_num": 4
+        },{
+          "kpi_id": "pcy045",
+          "kpi_name": "平台试运行进度",
+          "kpi_level": "4",
+          "kpi_weight": 0,
+          "kpi_stand": [{
+            "id": "pcy045001",
+            "kpi_stand_name": "平台试运行进度按计划进行，得2分"
+          }, {
+            "id": "pcy045002",
+            "kpi_stand_name": "平台试运行进度未按计划进行，得0-2分"
+          }],
+          "order_num": 5
+        }],
+        "kpi_weight1": "50",
+        "kpi_weight2": "25",
+        "kpi_weight3": "15",
+        "kpi_weight4": "",
+        "kpi_weight5": "",
+        "parent_id": "{59F8D02E-2450-4039-908F-6042CB9F5715}",
+        "value_type": "2"
+      }, {
+        "chr_id1": "{041A81AE-4E79-4049-AA7B-E028E0B921D3}",
+        "chr_id2": "{77C4EAE5-A756-4923-8DB7-CB67BFC1BE97}",
+        "chr_id3": "{2E6BD3B8-1D08-4890-B0D6-75BD208ED62D}",
+        "chr_id4": "",
+        "chr_id5": "",
+        "select_num": 6,
+        "id": "b74faa47-6cf3-4355-bf26-3308b57c6fea",
+        "kpi_explain1": "项目绩效",
+        "kpi_explain2": "项目效果",
+        "kpi_explain3": "经济效益",
+        "kpi_explain4": "",
+        "kpi_explain5": "",
+        "kpi_name1": "项目绩效",
+        "kpi_name2": "项目效果",
+        "kpi_name3": "经济效益",
+        "kpi_name4": "",
+        "kpi_name5": "",
+        "kpi_Final": [{
+          "kpi_id": "pcy061",
+          "kpi_name": "平台正式运行进度",
+          "kpi_level": "4",
+          "kpi_weight": 0,
+          "kpi_explain": "平台正式运行进度",
+          "kpi_stand": [{
+            "id": "pcy061001",
+            "kpi_stand_name": "平台试运行进度按计划进行，得2分"
+          }, {
+            "id": "pcy061002",
+            "kpi_stand_name": "平台试运行进度未按计划进行，得0-2分"
+          }],
+          "order_num": 1
+        },{
+          "kpi_id": "pcy062",
+          "kpi_name": "平台试运行进度",
+          "kpi_level": "4",
+          "kpi_weight": 0,
+          "kpi_stand": [{
+            "id": "pcy062001",
+            "kpi_stand_name": "平台试运行进度按计划进行，得2分"
+          }, {
+            "id": "pcy012002",
+            "kpi_stand_name": "平台试运行进度未按计划进行，得0-2分"
+          }],
+          "order_num": 2
+        },{
+          "kpi_id": "pcy063",
+          "kpi_name": "平台试运行进度",
+          "kpi_level": "4",
+          "kpi_weight": 0,
+          "kpi_stand": [{
+            "id": "pcy063001",
+            "kpi_stand_name": "平台试运行进度按计划进行，得2分"
+          }, {
+            "id": "pcy063002",
+            "kpi_stand_name": "平台试运行进度未按计划进行，得0-2分"
+          }],
+          "order_num": 3
+        },{
+          "kpi_id": "pcy064",
+          "kpi_name": "平台试运行进度",
+          "kpi_level": "4",
+          "kpi_weight": 0,
+          "kpi_stand": [{
+            "id": "pcy064001",
+            "kpi_stand_name": "平台试运行进度按计划进行，得2分"
+          }, {
+            "id": "pcy064002",
+            "kpi_stand_name": "平台试运行进度未按计划进行，得0-2分"
+          }],
+          "order_num": 4
+        },{
+          "kpi_id": "pcy065",
+          "kpi_name": "平台试运行进度",
+          "kpi_level": "4",
+          "kpi_weight": 0,
+          "kpi_stand": [{
+            "id": "pcy065001",
+            "kpi_stand_name": "平台试运行进度按计划进行，得2分"
+          }, {
+            "id": "pcy065002",
+            "kpi_stand_name": "平台试运行进度未按计划进行，得0-2分"
+          }],
+          "order_num": 5
+        }],
+        "kpi_weight1": "50",
+        "kpi_weight2": "25",
+        "kpi_weight3": "10",
+        "kpi_weight4": "",
+        "kpi_weight5": "",
+        "parent_id": "{2E6BD3B8-1D08-4890-B0D6-75BD208ED62D}",
+        "value_type": "2"
+      }, {
+        "chr_id1": "{041A81AE-4E79-4049-AA7B-E028E0B921D3}",
+        "chr_id2": "{77C4EAE5-A756-4923-8DB7-CB67BFC1BE97}",
+        "chr_id3": "{2E6BD3B8-1D08-4890-B0D6-75BD208ED62D}",
+        "chr_id4": "",
+        "chr_id5": "",
+        "select_num": 7,
+        "id": "ffad658e-b8fc-4680-9f83-a382031c2e50",
+        "kpi_explain1": "项目绩效",
+        "kpi_explain2": "项目效果",
+        "kpi_explain3": "经济效益",
+        "kpi_explain4": "",
+        "kpi_explain5": "",
+        "kpi_name1": "项目绩效",
+        "kpi_name2": "项目效果",
+        "kpi_name3": "经济效益",
+        "kpi_name4": "",
+        "kpi_name5": "",
+        "kpi_remark": "ss",
+        "kpi_Final": [{
+          "kpi_id": "pcy071",
+          "kpi_name": "平台正式运行进度",
+          "kpi_level": "4",
+          "kpi_weight": 0,
+          "kpi_explain": "平台正式运行进度",
+          "kpi_stand": [{
+            "id": "pcy071001",
+            "kpi_stand_name": "平台试运行进度按计划进行，得2分"
+          }, {
+            "id": "pcy071002",
+            "kpi_stand_name": "平台试运行进度未按计划进行，得0-2分"
+          }],
+          "order_num": 1
+        },{
+          "kpi_id": "pcy072",
+          "kpi_name": "平台试运行进度",
+          "kpi_level": "4",
+          "kpi_weight": 0,
+          "kpi_stand": [{
+            "id": "pcy072001",
+            "kpi_stand_name": "平台试运行进度按计划进行，得2分"
+          }, {
+            "id": "pcy072002",
+            "kpi_stand_name": "平台试运行进度未按计划进行，得0-2分"
+          }],
+          "order_num": 2
+        },{
+          "kpi_id": "pcy073",
+          "kpi_name": "平台试运行进度",
+          "kpi_level": "4",
+          "kpi_weight": 0,
+          "kpi_stand": [{
+            "id": "pcy073001",
+            "kpi_stand_name": "平台试运行进度按计划进行，得2分"
+          }, {
+            "id": "pcy073002",
+            "kpi_stand_name": "平台试运行进度未按计划进行，得0-2分"
+          }],
+          "order_num": 3
+        },{
+          "kpi_id": "pcy074",
+          "kpi_name": "平台试运行进度",
+          "kpi_level": "4",
+          "kpi_weight": 0,
+          "kpi_stand": [{
+            "id": "pcy074001",
+            "kpi_stand_name": "平台试运行进度按计划进行，得2分"
+          }, {
+            "id": "pcy074002",
+            "kpi_stand_name": "平台试运行进度未按计划进行，得0-2分"
+          }],
+          "order_num": 4
+        }],
+        "kpi_weight1": "50",
+        "kpi_weight2": "25",
+        "kpi_weight3": "10",
+        "kpi_weight4": "",
+        "kpi_weight5": "",
+        "parent_id": "{2E6BD3B8-1D08-4890-B0D6-75BD208ED62D}",
+        "value_type": "2"
+      }, {
+        "chr_id1": "{041A81AE-4E79-4049-AA7B-E028E0B921D3}",
+        "chr_id2": "{77C4EAE5-A756-4923-8DB7-CB67BFC1BE97}",
+        "chr_id3": "{F6152D9A-DBF1-4280-9598-118BF0F34511}",
+        "chr_id4": "",
+        "chr_id5": "",
+        "select_num": 8,
+        "id": "57affb9d-e074-49e4-994c-37f81ba011ac",
+        "kpi_explain1": "项目绩效",
+        "kpi_explain2": "项目效果",
+        "kpi_explain3": "社会效益",
+        "kpi_explain4": "",
+        "kpi_explain5": "",
+        "kpi_level": "4",
+        "kpi_name1": "项目绩效",
+        "kpi_name2": "项目效果",
+        "kpi_name3": "社会效益",
+        "kpi_name4": "",
+        "kpi_name5": "",
+        "kpi_Final": [{
+          "kpi_id": "pcy081",
+          "kpi_name": "平台正式运行进度",
+          "kpi_level": "4",
+          "kpi_weight": 0,
+          "kpi_explain": "平台正式运行进度",
+          "kpi_stand": [{
+            "id": "pcy081001",
+            "kpi_stand_name": "平台试运行进度按计划进行，得2分"
+          }, {
+            "id": "pcy081002",
+            "kpi_stand_name": "平台试运行进度未按计划进行，得0-2分"
+          }],
+          "order_num": 1
+        },{
+          "kpi_id": "pcy082",
+          "kpi_name": "平台试运行进度",
+          "kpi_level": "4",
+          "kpi_weight": 0,
+          "kpi_stand": [{
+            "id": "pcy082001",
+            "kpi_stand_name": "平台试运行进度按计划进行，得2分"
+          }, {
+            "id": "pcy082002",
+            "kpi_stand_name": "平台试运行进度未按计划进行，得0-2分"
+          }],
+          "order_num": 2
+        }],
+        "kpi_weight1": "50",
+        "kpi_weight2": "25",
+        "kpi_weight3": "15",
+        "kpi_weight4": "",
+        "kpi_weight5": "",
+        "parent_id": "{F6152D9A-DBF1-4280-9598-118BF0F34511}",
+        "value_type": "1"
+      }, {
+        "chr_id1": "{041A81AE-4E79-4049-AA7B-E028E0B921D3}",
+        "chr_id2": "{77C4EAE5-A756-4923-8DB7-CB67BFC1BE97}",
+        "chr_id3": "{F6152D9A-DBF1-4280-9598-118BF0F34511}",
+        "chr_id4": "",
+        "chr_id5": "",
+        "select_num": 9,
+        "id": "2a590926-e4fe-426f-9782-996b163251af",
+        "kpi_explain1": "项目绩效",
+        "kpi_explain2": "项目效果",
+        "kpi_explain3": "社会效益",
+        "kpi_explain4": "",
+        "kpi_explain5": "",
+        "kpi_level": "4",
+        "kpi_name": "文化惠民",
+        "kpi_name1": "项目绩效",
+        "kpi_name2": "项目效果",
+        "kpi_name3": "社会效益",
+        "kpi_name4": "",
+        "kpi_name5": "",
+        "kpi_Final": [{
+          "kpi_id": "pcy091",
+          "kpi_name": "平台正式运行进度",
+          "kpi_level": "4",
+          "kpi_weight": 0,
+          "kpi_explain": "平台正式运行进度",
+          "kpi_stand": [{
+            "id": "pcy091001",
+            "kpi_stand_name": "平台试运行进度按计划进行，得2分"
+          }, {
+            "id": "pcy091002",
+            "kpi_stand_name": "平台试运行进度未按计划进行，得0-2分"
+          }],
+          "order_num": 1
+        },{
+          "kpi_id": "pcy092",
+          "kpi_name": "平台试运行进度",
+          "kpi_level": "4",
+          "kpi_weight": 0,
+          "kpi_stand": [{
+            "id": "pcy092001",
+            "kpi_stand_name": "平台试运行进度按计划进行，得2分"
+          }, {
+            "id": "pcy092002",
+            "kpi_stand_name": "平台试运行进度未按计划进行，得0-2分"
+          }],
+          "order_num": 2
+        }],
+        "kpi_weight1": "50",
+        "kpi_weight2": "25",
+        "kpi_weight3": "15",
+        "kpi_weight4": "",
+        "kpi_weight5": "",
+        "parent_id": "{F6152D9A-DBF1-4280-9598-118BF0F34511}",
+        "value_type": "1"
+      }]
+    }
   }
 
 }
