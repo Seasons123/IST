@@ -9,7 +9,7 @@ TablecommonFn = {
     initTableHeader: function () {
         //总共的列数为：指标级次数levelNum+5
         var html = '<tr>';
-        for(var i=0; i < levelNum; i++){
+        for(var i=0; i < levelNum + 1; i++){
             html += '<th class="aa" width="100px" rowspan="2">' + kpiLevelName[i] + '</th>';
         }
         html += '<th class="aa" width="100px" rowspan="2">分数</th>';
@@ -22,12 +22,12 @@ TablecommonFn = {
     initTable: function (tableInfo) {
         kpiTableInfoGlobal = tableInfo;
         //行排序
-        evalContent = tableInfo.kpiSelect_content.sort(commonFn.sortByPro('select_num'));
+        evalContent = tableInfo.kpi_selected_content.sort(commonFn.sortByPro('order_num'));
         console.log(evalContent);
         //表格左侧json数据转换start
         var data = [];
         var trNum =evalContent.length;
-        levelNum = parseInt(evalContent[0].kpi_Final[0].kpi_level); //一共有几级指标
+        levelNum = parseInt(evalContent[0].kpi_level); //一共有几级指标
         TablecommonFn.initTableHeader(levelNum);
         tdNum = levelNum ;
         var indicatorArray = [];
@@ -113,24 +113,20 @@ TablecommonFn = {
                 }
             }
         }
-        //向指标对象中塞入末级指标对象，末级指标对象是一个数组，包含可供选择的所有末级指标对象。
+        //向指标对象中塞入末级指标对象，末级指标对象有finalKPI字段。
         for(var i= 0;i < trNum; i++) {
-            var finalIndicatorArray = [];
-            for(var j=0; j<evalContent[i].kpi_Final.length; j++){
-                var finalKPI = evalContent[i].kpi_Final[j];
-                indicatorObject = {
-                    id: finalKPI.kpi_id,
-                    level: finalKPI.kpi_level,
-                    name: finalKPI.kpi_name,
-                    rows: 1,
-                    weight: finalKPI.kpi_weight,
-                    explain: finalKPI.kpi_explain,
-                    standard: finalKPI.kpi_stand,
-                    type: evalContent[i].value_type
-                };
-                finalIndicatorArray.push(indicatorObject);
-            }
-            indicatorArray.push(finalIndicatorArray);
+            indicatorObject = {
+                id: evalContent[i].id,
+                level: evalContent[i].kpi_level,
+                name: evalContent[i].kpi_name,
+                rows: 1,
+                weight: evalContent[i].kpi_weight,
+                explain: evalContent[i].kpi_explain,
+                standard: evalContent[i].kpi_stand,
+                type: evalContent[i].value_type,
+                finalKPI: evalContent[i].kpi_final
+            };
+            indicatorArray.push(indicatorObject);
         }
         console.log(indicatorArray);
 
@@ -146,40 +142,28 @@ TablecommonFn = {
         }
         console.log(data);
 
-        //遍历indicatorArray，向data中塞值
+        //遍历indicatorArry，向data中塞值
         for(var i = 0; i< indicatorArray.length; i ++){
-            var num;
-            if(Array.isArray(indicatorArray[i])){
-                num = indicatorArray[i][0].level;
-            }else{
-                num = indicatorArray[i].level;
-            }
+            var num = indicatorArray[i].level;
             var tdIndicatorName = "t" + num;
             //var tdtdIndicatorweight = "t" + (2 * num);
             var tdIndicatorNameTrCount = "td" + num + "trCount";
             var temp = window[tdIndicatorNameTrCount];
-            if(Array.isArray(indicatorArray[i])) { //indicatorArray[i]为数组对象则是末级指标
+            for(var j = 0; j < indicatorArray[i].rows ; j ++){
                 for (var n in data[temp]) {
                     if (n == tdIndicatorName) {
-                        data[temp][n] = indicatorArray[i];
-                    }
-                }
-                window[tdIndicatorNameTrCount]++;
-                temp = window[tdIndicatorNameTrCount];
-            }else{
-                for (var j = 0; j < indicatorArray[i].rows; j++) {
-                    for (var n in data[temp]) {
-                        if (n == tdIndicatorName) {
-                            data[temp][n] = {
-                                name: indicatorArray[i].name,
-                                weight: indicatorArray[i].weight,
-                                rows: indicatorArray[i].rows,
-                                explain: indicatorArray[i].explain,
-                                id: indicatorArray[i].id
-                            };
-                            window[tdIndicatorNameTrCount]++;
-                            temp = window[tdIndicatorNameTrCount];
-                        }
+                        data[temp][n] = {
+                            name: indicatorArray[i].name,
+                            weight: indicatorArray[i].weight,
+                            rows: indicatorArray[i].rows,
+                            explain: indicatorArray[i].explain,
+                            id: indicatorArray[i].id,
+                            standard: indicatorArray[i].standard,
+                            type: indicatorArray[i].type,
+                            finalKPI: indicatorArray[i].finalKPI
+                        };
+                        window[tdIndicatorNameTrCount] ++ ;
+                        temp = window[tdIndicatorNameTrCount];
                     }
                 }
             }
@@ -221,33 +205,15 @@ TablecommonFn = {
                     kpiObjectFinal = item[m];
                 }
             }
-            console.log(kpiObjectFinal);
-            htmlTableBody += '<td class="cc" title="'+ kpiObjectFinal.explain +'">' + kpiObjectFinal.name + '</td>';//末级指标名字
-            htmlTableBody += '<td class="cc">' + kpiObjectFinal.weight + '</td>';//末级指标权重
-            htmlTableBody += '<td class="aa" colspan="5">';
-            for(var m=0; m < kpiObjectFinal.standard.length; m++){//末级指标评分标准
-                htmlTableBody += '<p style="width:300px;">' +
-                    '<label>' +  kpiObjectFinal.standard[m].kpi_stand_name + '</label>' +
-                    '<input type="radio" class="standard" id="'+ kpiObjectFinal.standard[m].id + '" name="'+ kpiObjectFinal.id +'" value="' + m + '" onclick="commonFn.changeScoreStandardValue(this.name,this.value)" disabled/>' +
-                    '</p>';
-            }
-            htmlTableBody += '</td>';
+            htmlTableBody += '<td class="cc" title="'+ kpiObjectFinal.explain +'" rowspan="' + kpiObjectFinal.rows + '">' + kpiObjectFinal.name  + "（" +  kpiObjectFinal.weight+ "分）" + '</td>';//当前末级指标
+            htmlTableBody += '<td class="cc"></td>';//下级待选择指标名称列
+            htmlTableBody += '<td class="cc"></td>';//下级待选择指标分数列
+            htmlTableBody += '<td class="aa" colspan="5"></td>';//下级待选择指标评分标准列
             // 渲染剩余两列（非填评分值部分） end
-
-            //生成评分值部分，每一个单元格以id形式打标记信息，标记值包含横纵的信息（末级指标名称+末级评分名称）
-            htmlTableBody += '<td class="bb"><textarea id="col004row' + kpiObjectFinal.id + '" class="easyui-validatebox quantify" required="true" onchange="commonFn.checkQuantity(value,this.id)" disabled></textarea><span></span></td>';//评价结果
-            if(kpiObjectFinal.score == 0 || kpiObjectFinal.score == null){
-                htmlTableBody += '<td class="bb"><textarea id="col005row' + kpiObjectFinal.id + '" class="easyui-validatebox grade" required="true" onchange="commonFn.checkGrade(value,this.id),commonFn.calScore()"></textarea></td>';//专家评分
-            }else{
-                htmlTableBody += '<td class="bb"><textarea id="col005row' + kpiObjectFinal.id + '" class="easyui-validatebox grade" required="true" onchange="commonFn.checkGrade(value,this.id),commonFn.calScore()" disabled>' + kpiObjectFinal.score + '</textarea></td>';//专家评分
-            }
-            htmlTableBody += '<td class="bb"><textarea id="col006row' + kpiObjectFinal.id + '" class="easyui-validatebox remark" disabled>' + kpiObjectFinal.remark + '</textarea></td>';//扣分原因
             htmlTableBody += '</tr>';
         });
         //渲染主体表格页面  end
-        TablecommonFn.generateSumRow(evalContent);
-        TablecommonFn.initVal(evalContent);
-        TablecommonFn.cssStyleControl(evalContent);
+        $('#tableBody').append(htmlTableBody);
     }
 };
 
@@ -264,7 +230,7 @@ var getInfo = function(){
         async: false,
         success: function (map) {
             if(map.status == '0'){
-                TablecommonFn.initTable(map.data.kpiSelect_detail_info);//使用本地json数据
+                TablecommonFn.initTable(map.data.kpi_config_info);//使用本地json数据
             }else{
                 ip.ipInfoJump(map.error_msg, 'error');
             }
