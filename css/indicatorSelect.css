@@ -2,7 +2,7 @@
     height:33px;
     border:solid 1px #95b3d7;
 }
-#top_table td,th,#review_table td,th{
+#top_table td,th,#select_table td,th{
     height:38px;
     border:solid 1px #95b3d7;
 }
@@ -32,7 +32,7 @@ td textarea{
     height:100%;
     padding:1px 0;
 }
-#top_table,#review_table{
+#top_table,#select_table{
     border:solid 1px #95b3d7;
     border-collapse:collapse;
 }
@@ -97,4 +97,7 @@ input.text{
 }
 .quantify {
     width: 69%;
+}
+.name{
+    width: 59%;
 }

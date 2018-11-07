@@ -14,6 +14,7 @@ TablecommonFn = {
         }
         html += '<th class="aa" width="100px" rowspan="2">分数</th>';
         html += '<th class="aa" width="500px" id="003" rowspan="2" colspan="5">评分标准</th>';
+        html += '<th class="aa" width="500px" id="003" rowspan="2" colspan="5">操作</th>';
         html += '</tr>';
         $('#tableHeader').append(html);
     },
@@ -196,7 +197,7 @@ TablecommonFn = {
                 }
             }
 
-            //渲染剩余两列（非填评分值部分） start
+            //渲染当前末级指标列start
             var tdKey = "t" + tdNum;
             var kpiObjectFinal;
             //拿到末级指标对象
@@ -206,10 +207,21 @@ TablecommonFn = {
                 }
             }
             htmlTableBody += '<td class="cc" title="'+ kpiObjectFinal.explain +'" rowspan="' + kpiObjectFinal.rows + '">' + kpiObjectFinal.name  + "（" +  kpiObjectFinal.weight+ "分）" + '</td>';//当前末级指标
-            htmlTableBody += '<td class="cc"></td>';//下级待选择指标名称列
-            htmlTableBody += '<td class="cc"></td>';//下级待选择指标分数列
-            htmlTableBody += '<td class="aa" colspan="5"></td>';//下级待选择指标评分标准列
-            // 渲染剩余两列（非填评分值部分） end
+            //渲染当前末级指标列end
+
+            //渲染下级待选择指标内容start
+            htmlTableBody += '<td class="cc"><textarea id="name' + kpiObjectFinal.id + '" class="easyui-validatebox name" required="true" onchange="" ></textarea>&nbsp;' +
+                '<a href="#" class="easyui-linkbutton" iconCls="icon-select" id="editBtn" onclick="commonFn.edit()"></a>' +
+                '</td>';//名称列
+            htmlTableBody += '<td class="cc"><textarea id="weight' + kpiObjectFinal.id + '" class="easyui-validatebox name" required="true" onchange="" ></textarea></td>';//权重列
+            htmlTableBody += '<td class="aa" colspan="5"><textarea id="name' + kpiObjectFinal.id + '" class="easyui-validatebox name" required="true" onchange="" ></textarea></td>';//评分标准列
+            //渲染下级待选择指标内容end
+
+            htmlTableBody += '<td class="cc">' +
+                '<a href="#" class="easyui-linkbutton" iconCls="icon-edit" id="editBtn" onclick="commonFn.edit()">修改</a>&nbsp;' +
+                '<a href="#" class="easyui-linkbutton" iconCls="icon-add" id="editBtn" onclick="commonFn.add()">增加</a>&nbsp;' +
+                '<a href="#" class="easyui-linkbutton" iconCls="icon-remove" id="editBtn" onclick="commonFn.remove()">删除</a>' +
+                '</td>';//最后一列操作列
             htmlTableBody += '</tr>';
         });
         //渲染主体表格页面  end
