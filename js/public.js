@@ -4,6 +4,7 @@ switch (sever){
     case  "1":
         formUrl = {
             "getIndicator": '../data/target.json',
+            "queryNextKpi": '../data/nextKpi.json',
             "saveEvalKPI": '../data/saveTarget.json'
         };
         break;

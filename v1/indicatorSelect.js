@@ -210,11 +210,11 @@ TablecommonFn = {
             //渲染当前末级指标列end
 
             //渲染下级待选择指标内容start
-            htmlTableBody += '<td class="cc"><textarea id="name' + kpiObjectFinal.id + '" class="easyui-validatebox name" required="true" onchange="" ></textarea>&nbsp;' +
-                '<a href="#" class="easyui-linkbutton" iconCls="icon-select" id="editBtn" onclick="commonFn.edit()"></a>' +
+            htmlTableBody += '<td class="cc"><textarea id="name' + kpiObjectFinal.id + '" class="easyui-validatebox name" required="true" ></textarea>&nbsp;' +
+                '<a href="#" class="easyui-linkbutton" iconCls="icon-select" id="'+ kpiObjectFinal.id  +'" onclick="commonFn.showNextKPITree(this.id)"></a>' +
                 '</td>';//名称列
             htmlTableBody += '<td class="cc"><textarea id="weight' + kpiObjectFinal.id + '" class="easyui-validatebox name" required="true" onchange="" ></textarea></td>';//权重列
-            htmlTableBody += '<td class="aa" colspan="5"><textarea id="name' + kpiObjectFinal.id + '" class="easyui-validatebox name" required="true" onchange="" ></textarea></td>';//评分标准列
+            htmlTableBody += '<td class="aa" colspan="5"><textarea id="standard' + kpiObjectFinal.id + '" class="easyui-validatebox name" required="true" onchange="" ></textarea></td>';//评分标准列
             //渲染下级待选择指标内容end
 
             htmlTableBody += '<td class="cc">' +
