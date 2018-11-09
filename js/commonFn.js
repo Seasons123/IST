@@ -78,10 +78,9 @@ var commonFn = {
                             for(var m=0; m < kpiObjectNext.length; m++){//末级指标评分标准
                                 htmlDialog += '<p style="width:300px;">' +
                                     '<label>' +  kpiObjectNext[m].kpi_name + '</label>' +
-                                    '<input type="radio" class="standard" id="'+ kpiObjectNext[m].id + '" name="'+ id +'" value="' + m + '" onclick="commonFn.changeScoreStandardValue(this.name,this.value)" />' +
+                                    '<input type="radio" class="nextKPISelect" id="'+ kpiObjectNext[m].kpi_id + '" name="'+ id +'" value="' + m + '" onclick="commonFn.changeNextKPISelect(this.name,this.value)" />' +
                                     '</p>';
                             }
-
                         }
                     }
                    $('#dialog').append(htmlDialog);
@@ -90,38 +89,23 @@ var commonFn = {
                 }
             }
         });
+    },
+    changeNextKPISelect: function(id,value){
+        $("input[name='"+ id +"']").each(function(index,domEle){
+            domEle.attr("checked",false);
+        });
+        $("input[name='"+ id +"'][value="+value+"]").attr("checked",true);
+    },
+    dialogSave: function(){
+        alert($("#dialog").children(':first').children()[1].id);
 
+    },
+    dialogClose: function(){
+        $("#dialog").dialog({
+            onClose: function () {
+                $(this).dialog('destroy');//销毁
+            }
+        });
     }
 
-    /*
- * 辅助录入树的弹窗 param id 目标输入框的id element 资源标识 flag单选和多选的标识（0代表单选，1代表有多选框的）
- */
-  /*  ip.showAssitTree = function(id, element, flag, viewModel, areaId, ele_name, callBack,condition,parentFlag) {
-    var current_url = location.search;
-    var tokenid = current_url.substring(current_url.indexOf("tokenid") + 8, current_url.indexOf("tokenid") + 48);
-    var id_p = id.indexOf("-btn");
-    if (id_p != -1) {
-        id = id.substr(0, id_p);
-    }
-    var ele_value = "";
-    if(condition == undefined) {
-        condition = "";
-    }
-    var all_options = {
-        "element": element,
-        "tokenid": tokenid,
-        "ele_value": ele_value,
-        "ajax": "noCache",
-        "condition": condition
-    };
-    $.ajax({
-        url: "/df/dic/dictree.do",
-        type: "GET",
-        async: false,
-        data: ip.getCommonOptions(all_options),
-        success: function(data) {
-            ip.treeChoice(id, data.eleDetail, flag, viewModel, areaId, ele_name, parentFlag,callBack);
-        }
-    });
-}*/
 };

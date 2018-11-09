@@ -34,21 +34,22 @@
                 </tbody>
             </table>
             <!--模态对话框-->
-            <div id="dialog" class="easyui-dialog" title="末级指标选择"  style="width: 350px; padding: 10px 10px; height: 300px;"
+            <div id="dialog" class="easyui-dialog" style="width: 350px; padding: 10px 10px; height: 300px;"
                  data-options="title:'末级指标选择',modal:true,closed:true,
-			                buttons:[{
+			                 buttons:[{
 				                 text:'保存',
-				                 handler:function(){}
-                           },{
+				                 handler:commonFn.dialogSave
+                            },{
                                text:'关闭',
-                               handler:function(){}
-                           }]">
+                               handler:commonFn.dialogClose
+                            }]">
             </div>
         </form>
         <br/>
         <br/>
         <br/>
         <!--endprint1-->
+    </div>
 </div>
 
 <script src="../plugins/knockout/knockout-3.2.0.debug.js"></script>
