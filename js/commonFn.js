@@ -58,6 +58,23 @@ var commonFn = {
      * 显示下一级待选择末级指标树
      */
     showNextKPITree : function(id){
+        $('#dialogContent').dialog({ //用js创建dialog
+            title: '末级指标选择',
+            width: 350,
+            height: 300,
+            closed: true,
+            cache: false,
+            resizable:true,
+            modal: true,
+            queryParams: { value: id },//值传递
+            buttons:[{
+                text:'保存',
+                handler:commonFn.dialogSave
+            },{
+                text:'关闭',
+                handler:commonFn.dialogClose
+            }]
+        });
         var data = {
             "kpi_id":id
         };
@@ -69,21 +86,21 @@ var commonFn = {
             async: false,
             success: function (map) {
                 if(map.status == '0'){
-                    $('#dialog').dialog('open').html("");
+                    $('#dialogContent').dialog('open').html("");
                     var htmlDialog = "";
                     var len = map.data.length;
                     for(var i=0; i<len; i++){
                         if(id == map.data[i].id){
-                            var kpiObjectNext = map.data[i].kpi_final;
-                            for(var m=0; m < kpiObjectNext.length; m++){//末级指标评分标准
+                            kpiObjectNextGlobal = map.data[i].kpi_final;
+                            for(var m=0; m < kpiObjectNextGlobal.length; m++){//末级指标评分标准
                                 htmlDialog += '<p style="width:300px;">' +
-                                    '<label>' +  kpiObjectNext[m].kpi_name + '</label>' +
-                                    '<input type="radio" class="nextKPISelect" id="'+ kpiObjectNext[m].kpi_id + '" name="'+ id +'" value="' + m + '" onclick="commonFn.changeNextKPISelect(this.name,this.value)" />' +
+                                    '<label>' +  kpiObjectNextGlobal[m].kpi_name + '</label>' +
+                                    '<input type="radio" class="nextKPISelect" id="'+ kpiObjectNextGlobal[m].kpi_id + '" name="'+ id +'" value="' + m + '" onclick="commonFn.changeNextKPISelect(this.name,this.value)" />' +
                                     '</p>';
                             }
                         }
                     }
-                   $('#dialog').append(htmlDialog);
+                   $('#dialogContent').append(htmlDialog);
                 }else{
                     ip.ipInfoJump(map.error_msg, 'error');
                 }
@@ -92,16 +109,34 @@ var commonFn = {
     },
     changeNextKPISelect: function(id,value){
         $("input[name='"+ id +"']").each(function(index,domEle){
-            domEle.attr("checked",false);
+            if(domEle.value == value){
+                $("#"+domEle.id).attr("checked",true);
+            }else{
+                $("#"+domEle.id).attr("checked",false);
+            }
         });
-        $("input[name='"+ id +"'][value="+value+"]").attr("checked",true);
     },
     dialogSave: function(){
-        alert($("#dialog").children(':first').children()[1].id);
+        var obj = $('#dialogContent').dialog('options');
+        var id = obj["queryParams"].value; //末级的父级指标id值
+        var idFinalKPI = $("input[name='"+ id +"']:checked").attr('id'); //末级指标id值
+        if(idFinalKPI){
+            for(var i=0; i<kpiObjectNextGlobal.length; i++){
+                if(kpiObjectNextGlobal[i].kpi_id == idFinalKPI){
+                    $('#row' + id + 'colname' + (levelNum + 1)).val(kpiObjectNextGlobal[i].kpi_name).attr("id", "row"+ idFinalKPI +"colname" + (levelNum + 1));
+
+
+                }
+
+            }
+
+        }else{
+            $.messager.alert('信息', '请选择末级指标', 'info');
+        }
 
     },
     dialogClose: function(){
-        $("#dialog").dialog({
+        $("#dialogContent").dialog({
             onClose: function () {
                 $(this).dialog('destroy');//销毁
             }

@@ -4,17 +4,18 @@ var evalContent={};
 var levelNum;
 var kpiLevelName = ["一级指标","二级指标","三级指标","四级指标","五级指标","六级指标","七级指标","八级指标","九级指标","十级指标"];
 var htmlTableBody = '<tr>';
+var kpiObjectNextGlobal;
 TablecommonFn = {
 
     initTableHeader: function () {
         //总共的列数为：指标级次数levelNum+5
         var html = '<tr>';
         for(var i=0; i < levelNum + 1; i++){
-            html += '<th class="aa" width="100px" rowspan="2">' + kpiLevelName[i] + '</th>';
+            html += '<th id="col'+ (i+1) +'" class="aa" width="100px" rowspan="2">' + kpiLevelName[i] + '</th>';
         }
-        html += '<th class="aa" width="100px" rowspan="2">分数</th>';
-        html += '<th class="aa" width="500px" id="003" rowspan="2" colspan="5">评分标准</th>';
-        html += '<th class="aa" width="500px" id="003" rowspan="2" colspan="5">操作</th>';
+        html += '<th id="colWeight" class="aa" width="100px" rowspan="2">分数</th>';
+        html += '<th id="colStander" class="aa" width="500px" id="003" rowspan="2" colspan="5">评分标准</th>';
+        html += '<th id="colOperation" class="aa" width="500px" id="003" rowspan="2" colspan="5">操作</th>';
         html += '</tr>';
         $('#tableHeader').append(html);
     },
@@ -183,7 +184,7 @@ TablecommonFn = {
         }
         //渲染主体表格页面  start
         $.each(data, function (i, item) {
-            for (var j = 1; j <= (tdNum - 1); j++) { //动态生成除最后两行的所有行（非填评分值部分）
+            for (var j = 1; j <= (tdNum - 1); j++) { //动态生成当前末级指标的父级指标的所有列
                 var tdKey = "t" + j;
                 var kpiObject;
                 for (var m in item) {
@@ -210,14 +211,14 @@ TablecommonFn = {
             //渲染当前末级指标列end
 
             //渲染下级待选择指标内容start
-            htmlTableBody += '<td class="cc"><textarea id="name' + kpiObjectFinal.id + '" class="easyui-validatebox name" required="true" ></textarea>&nbsp;' +
+            htmlTableBody += '<td class="cc"><textarea id="row' + kpiObjectFinal.id + 'colname'+ (levelNum + 1) +'" class="easyui-validatebox name" required="true" ></textarea>&nbsp;' +  //名称列
                 '<a href="#" class="easyui-linkbutton" iconCls="icon-select" id="'+ kpiObjectFinal.id  +'" onclick="commonFn.showNextKPITree(this.id)"></a>' +
-                '</td>';//名称列
-            htmlTableBody += '<td class="cc"><textarea id="weight' + kpiObjectFinal.id + '" class="easyui-validatebox name" required="true" onchange="" ></textarea></td>';//权重列
-            htmlTableBody += '<td class="aa" colspan="5"><textarea id="standard' + kpiObjectFinal.id + '" class="easyui-validatebox name" required="true" onchange="" ></textarea></td>';//评分标准列
+                '</td>';
+            htmlTableBody += '<td class="cc"><textarea id="row' + kpiObjectFinal.id + 'colWeight" class="easyui-validatebox name" required="true" onchange="" ></textarea></td>';//权重列
+            htmlTableBody += '<td class="aa" colspan="5"><textarea id="row' + kpiObjectFinal.id + 'colStandard" class="easyui-validatebox name" required="true" onchange="" ></textarea></td>';//评分标准列
             //渲染下级待选择指标内容end
 
-            htmlTableBody += '<td class="cc">' +
+            htmlTableBody += '<td id="row' + kpiObjectFinal.id + 'colOperation" class="cc">' +
                 '<a href="#" class="easyui-linkbutton" iconCls="icon-edit" id="editBtn" onclick="commonFn.edit()">修改</a>&nbsp;' +
                 '<a href="#" class="easyui-linkbutton" iconCls="icon-add" id="editBtn" onclick="commonFn.add()">增加</a>&nbsp;' +
                 '<a href="#" class="easyui-linkbutton" iconCls="icon-remove" id="editBtn" onclick="commonFn.remove()">删除</a>' +
