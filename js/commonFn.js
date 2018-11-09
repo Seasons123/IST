@@ -63,7 +63,6 @@ var commonFn = {
             width: 350,
             height: 300,
             closed: true,
-            cache: false,
             resizable:true,
             modal: true,
             queryParams: { value: id },//值传递
@@ -123,24 +122,21 @@ var commonFn = {
         if(idFinalKPI){
             for(var i=0; i<kpiObjectNextGlobal.length; i++){
                 if(kpiObjectNextGlobal[i].kpi_id == idFinalKPI){
-                    $('#row' + id + 'colname' + (levelNum + 1)).val(kpiObjectNextGlobal[i].kpi_name).attr("id", "row"+ idFinalKPI +"colname" + (levelNum + 1));
-
-
+                    $('#row' + id + 'colName' + (levelNum + 1)).val(kpiObjectNextGlobal[i].kpi_name).attr("id", "row"+ idFinalKPI +"colName" + (levelNum + 1));
                 }
-
             }
-
         }else{
             $.messager.alert('信息', '请选择末级指标', 'info');
         }
 
     },
     dialogClose: function(){
+        /*该关闭方法不妥，弹窗会被永久销毁
         $("#dialogContent").dialog({
             onClose: function () {
                 $(this).dialog('destroy');//销毁
             }
-        });
+        });*/
     }
 
 };

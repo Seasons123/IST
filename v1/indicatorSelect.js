@@ -11,7 +11,7 @@ TablecommonFn = {
         //总共的列数为：指标级次数levelNum+5
         var html = '<tr>';
         for(var i=0; i < levelNum + 1; i++){
-            html += '<th id="col'+ (i+1) +'" class="aa" width="100px" rowspan="2">' + kpiLevelName[i] + '</th>';
+            html += '<th id="colName'+ (i+1) +'" class="aa" width="100px" rowspan="2">' + kpiLevelName[i] + '</th>';
         }
         html += '<th id="colWeight" class="aa" width="100px" rowspan="2">分数</th>';
         html += '<th id="colStander" class="aa" width="500px" id="003" rowspan="2" colspan="5">评分标准</th>';
@@ -31,6 +31,7 @@ TablecommonFn = {
         var trNum =evalContent.length;
         levelNum = parseInt(evalContent[0].kpi_level); //一共有几级指标
         TablecommonFn.initTableHeader(levelNum);
+        $("#colName" + (levelNum + 1)).css("width","200px");
         tdNum = levelNum ;
         var indicatorArray = [];
         var indicatorObject = {};
@@ -211,11 +212,11 @@ TablecommonFn = {
             //渲染当前末级指标列end
 
             //渲染下级待选择指标内容start
-            htmlTableBody += '<td class="cc"><textarea id="row' + kpiObjectFinal.id + 'colname'+ (levelNum + 1) +'" class="easyui-validatebox name" required="true" ></textarea>&nbsp;' +  //名称列
+            htmlTableBody += '<td class="cc"><textarea id="row' + kpiObjectFinal.id + 'colName'+ (levelNum + 1) +'" class="easyui-validatebox name" required="true" ></textarea>&nbsp;' +  //名称列
                 '<a href="#" class="easyui-linkbutton" iconCls="icon-select" id="'+ kpiObjectFinal.id  +'" onclick="commonFn.showNextKPITree(this.id)"></a>' +
                 '</td>';
-            htmlTableBody += '<td class="cc"><textarea id="row' + kpiObjectFinal.id + 'colWeight" class="easyui-validatebox name" required="true" onchange="" ></textarea></td>';//权重列
-            htmlTableBody += '<td class="aa" colspan="5"><textarea id="row' + kpiObjectFinal.id + 'colStandard" class="easyui-validatebox name" required="true" onchange="" ></textarea></td>';//评分标准列
+            htmlTableBody += '<td class="cc"><textarea id="row' + kpiObjectFinal.id + 'colWeight" class="easyui-validatebox weight" required="true" onchange="" ></textarea></td>';//权重列
+            htmlTableBody += '<td class="aa" colspan="5"><textarea id="row' + kpiObjectFinal.id + 'colStandard" class="easyui-validatebox standard" required="true" onchange="" ></textarea></td>';//评分标准列
             //渲染下级待选择指标内容end
 
             htmlTableBody += '<td id="row' + kpiObjectFinal.id + 'colOperation" class="cc">' +
