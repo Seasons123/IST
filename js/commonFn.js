@@ -176,27 +176,12 @@ var commonFn = {
 
             }
         }
-
+        commonFn.initSerial();//序列号重排
     },
-    /*
-    js将dom对象转换成字符串
-    */
-    nodeToString:function  ( node ) {
-    //createElement()返回一个Element对象
-    var tmpNode = document.createElement( "div" );
-    //appendChild()  参数Node对象   返回Node对象  Element方法
-    //cloneNode()  参数布尔类型  返回Node对象   Element方法
-    tmpNode.appendChild( node.cloneNode( true ) );
-    var str = tmpNode.innerHTML;
-    tmpNode = node = null; // prevent memory leaks in IE
-    return str;
-    },
-
     initSerial: function(){
         var i = 1;
         $(".serial").each(function(){
             $(this).html(i++);
         })
     }
-
 };
