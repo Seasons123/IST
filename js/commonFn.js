@@ -140,6 +140,63 @@ var commonFn = {
     },
     dialogClose: function(){
         $('#dialogContent').dialog('close');
+    },
+    addTableRow: function(that){
+        var id = that.parentNode.id.split("row")[1].split("col")[0];//当前末级指标的父级id
+        var num = that.parentNode.parentNode.lastChild.innerHTML;//获取是第几行
+
+        //新增一行start
+        var trHTML = "<tr>";
+        trHTML += '<td class="cc"><textarea id="row' + id + 'colName'+ (levelNum + 1) +'" class="easyui-validatebox name" required="true" ></textarea>&nbsp;' +  //名称列
+            '<a href="#" class="easyui-linkbutton" iconCls="icon-select" id="'+ id  +'" onclick="commonFn.showNextKPITree(this.id)"></a>' +
+            '</td>';
+        trHTML += '<td class="cc"><textarea id="row' + id + 'colWeight" class="easyui-validatebox weight" required="true" onchange="" ></textarea></td>';//权重列
+        trHTML += '<td class="aa" colspan="5"><textarea id="row' + id + 'colStandard" class="easyui-validatebox standard" required="true" onchange="" ></textarea></td>';//评分标准列
+
+        trHTML += '<td id="row' + id + 'colOperation" class="cc" colspan="5">' +
+            '<a href="#" class="easyui-linkbutton" iconCls="icon-edit" id="editBtn" onclick="commonFn.editContent()">修改</a>&nbsp;' +
+            '<a href="#" class="easyui-linkbutton" iconCls="icon-add" id="editBtn" onclick="commonFn.addTableRow(this)">增加</a>&nbsp;' +
+            '<a href="#" class="easyui-linkbutton" iconCls="icon-remove" id="editBtn" onclick="commonFn.removeTableRow()">删除</a>' +
+            '</td>';//最后一列操作列
+        trHTML += '<td class="serial" colspan="1" style="display:none;"></td>';//序号列
+        trHTML += '</tr>';
+        //新增一行end
+        $("#select_table tr:eq("+ parseInt(num) +")").after(trHTML);
+
+        //修改父级的合并行
+        var rowspanOld = $("#"+id).attr("rowspan");
+        $("#"+id).attr("rowspan",parseInt(rowspanOld)+1);
+        for(var i=0 ;i<evalContent.length; i++){
+            if(evalContent[i].id == id){
+                for(var j=1; j<levelNum; j++){
+                    var parentId = "chr_id" + j ;
+                    var old = $("#"+evalContent[i][parentId]).attr("rowspan");
+                    $("#"+evalContent[i][parentId]).attr("rowspan",parseInt(old)+1);
+                }
+
+            }
+        }
+
+    },
+    /*
+    js将dom对象转换成字符串
+    */
+    nodeToString:function  ( node ) {
+    //createElement()返回一个Element对象
+    var tmpNode = document.createElement( "div" );
+    //appendChild()  参数Node对象   返回Node对象  Element方法
+    //cloneNode()  参数布尔类型  返回Node对象   Element方法
+    tmpNode.appendChild( node.cloneNode( true ) );
+    var str = tmpNode.innerHTML;
+    tmpNode = node = null; // prevent memory leaks in IE
+    return str;
+    },
+
+    initSerial: function(){
+        var i = 1;
+        $(".serial").each(function(){
+            $(this).html(i++);
+        })
     }
 
 };
