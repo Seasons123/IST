@@ -122,21 +122,24 @@ var commonFn = {
         if(idFinalKPI){
             for(var i=0; i<kpiObjectNextGlobal.length; i++){
                 if(kpiObjectNextGlobal[i].kpi_id == idFinalKPI){
-                    $('#row' + id + 'colName' + (levelNum + 1)).val(kpiObjectNextGlobal[i].kpi_name).attr("id", "row"+ idFinalKPI +"colName" + (levelNum + 1));
+                    if($('#row' + id + 'colName' + (levelNum + 1)).length != 0){
+                        $('#row' + id + 'colName' + (levelNum + 1)).val(kpiObjectNextGlobal[i].kpi_name).attr("id", "row"+ idFinalKPI +"colName" + (levelNum + 1));
+                        idTem = "row"+ idFinalKPI +"colName" + (levelNum + 1);
+                    }else{
+                        $('#' + idTem).val(kpiObjectNextGlobal[i].kpi_name).attr("id", "row"+ idFinalKPI +"colName" + (levelNum + 1));
+                        idTem = "row"+ idFinalKPI +"colName" + (levelNum + 1);
+                    }
+
                 }
             }
+            //$('#dialogContent').dialog('close');
         }else{
             $.messager.alert('信息', '请选择末级指标', 'info');
         }
 
     },
     dialogClose: function(){
-        /*该关闭方法不妥，弹窗会被永久销毁
-        $("#dialogContent").dialog({
-            onClose: function () {
-                $(this).dialog('destroy');//销毁
-            }
-        });*/
+        $('#dialogContent').dialog('close');
     }
 
 };
