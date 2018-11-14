@@ -148,15 +148,23 @@ var commonFn = {
         //新增一行start
         var trHTML = "<tr>";
         trHTML += '<td class="cc"><textarea id="row' + id + 'colName'+ (levelNum + 1) +'" class="easyui-validatebox name" required="true" ></textarea>&nbsp;' +  //名称列
-            '<a href="#" class="easyui-linkbutton" iconCls="icon-select" id="'+ id  +'" onclick="commonFn.showNextKPITree(this.id)"></a>' +
+            '<a href="#" class="easyui-linkbutton l-btn l-btn-small" iconcls="icon-select" id="'+ id  +'" onclick="commonFn.showNextKPITree(this.id)" group>' +
+            '  <span class="l-btn-left l-btn-icon-left"><span class="l-btn-text l-btn-empty">&nbsp;</span><span class="l-btn-icon icon-select">&nbsp;</span></span>' +
+            '</a>' +
             '</td>';
         trHTML += '<td class="cc"><textarea id="row' + id + 'colWeight" class="easyui-validatebox weight" required="true" onchange="" ></textarea></td>';//权重列
         trHTML += '<td class="aa" colspan="5"><textarea id="row' + id + 'colStandard" class="easyui-validatebox standard" required="true" onchange="" ></textarea></td>';//评分标准列
 
         trHTML += '<td id="row' + id + 'colOperation" class="cc" colspan="5">' +
-            '<a href="#" class="easyui-linkbutton" iconCls="icon-edit" id="editBtn" onclick="commonFn.editContent()">修改</a>&nbsp;' +
-            '<a href="#" class="easyui-linkbutton" iconCls="icon-add" id="editBtn" onclick="commonFn.addTableRow(this)">增加</a>&nbsp;' +
-            '<a href="#" class="easyui-linkbutton" iconCls="icon-remove" id="editBtn" onclick="commonFn.removeTableRow()">删除</a>' +
+            '<a href="#" class="easyui-linkbutton l-btn l-btn-small" iconcls="icon-edit" id="editBtn" onclick="commonFn.editContent()" group>' +
+            '  <span class="l-btn-left l-btn-icon-left"><span class="l-btn-text">修改</span><span class="l-btn-icon icon-edit">&nbsp;</span></span>' +
+            '</a>' +
+            '<a href="#" class="easyui-linkbutton l-btn l-btn-small" iconcls="icon-add" id="addBtn" onclick="commonFn.addTableRow(this)" group>' +
+            '  <span class="l-btn-left l-btn-icon-left"><span class="l-btn-text">增加</span><span class="l-btn-icon icon-add">&nbsp;</span></span>' +
+            '</a>' +
+            '<a href="#" class="easyui-linkbutton l-btn l-btn-small" iconcls="icon-remove" id="removeBtn" onclick="commonFn.removeTableRow()" group>' +
+            '  <span class="l-btn-left l-btn-icon-left"><span class="l-btn-text">删除</span><span class="l-btn-icon icon-remove">&nbsp;</span></span>' +
+            '</a>' +
             '</td>';//最后一列操作列
         trHTML += '<td class="serial" colspan="1" style="display:none;"></td>';//序号列
         trHTML += '</tr>';

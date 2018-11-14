@@ -223,8 +223,8 @@ TablecommonFn = {
 
             htmlTableBody += '<td id="row' + kpiObjectFinal.id + 'colOperation" class="cc" colspan="5">' +
                 '<a href="#" class="easyui-linkbutton" iconCls="icon-edit" id="editBtn" onclick="commonFn.editContent()">修改</a>&nbsp;' +
-                '<a href="#" class="easyui-linkbutton" iconCls="icon-add" id="editBtn" onclick="commonFn.addTableRow(this)">增加</a>&nbsp;' +
-                '<a href="#" class="easyui-linkbutton" iconCls="icon-remove" id="editBtn" onclick="commonFn.removeTableRow()">删除</a>' +
+                '<a href="#" class="easyui-linkbutton" iconCls="icon-add" id="addBtn" onclick="commonFn.addTableRow(this)">增加</a>&nbsp;' +
+                '<a href="#" class="easyui-linkbutton" iconCls="icon-remove" id="removeBtn" onclick="commonFn.removeTableRow()">删除</a>' +
                 '</td>';//最后一列操作列
             htmlTableBody += '<td class="serial" colspan="1" style="display:none;"></td>';//序号列
             htmlTableBody += '</tr>';
