@@ -10,8 +10,17 @@ var commonFn = {
         }
     },
     /**
-     * 修改指标选择信息
+     * 产生随机整数，包含下限值，但不包括上限值
+     * @param {Number} lower 下限
+     * @param {Number} upper 上限
+     * @return {Number} 返回在下限到上限之间的一个随机整数
      */
+    random: function (lower, upper) {
+        return Math.floor(Math.random() * (upper - lower)) + lower;
+    },
+    /**
+    * 修改指标选择信息
+    */
     editEvalKPI: function () {
         if ($('#editBtn').linkbutton('options').disabled == false) {
             //commonFn.setEditCellColor(true);
@@ -57,7 +66,9 @@ var commonFn = {
     /**
      * 显示下一级待选择末级指标树
      */
-    showNextKPITree : function(id){
+    showNextKPITree : function(value){
+        var id = value.split("num")[0];
+        var idTextArea = $("#" + value).prev().attr("id");
         $('#dialogContent').dialog({ //用js创建dialog
             title: '末级指标选择',
             width: 350,
@@ -65,7 +76,7 @@ var commonFn = {
             closed: true,
             resizable:true,
             modal: true,
-            queryParams: { value: id },//值传递
+            queryParams: { parentId: id , textAreaId: idTextArea},//值传递
             buttons:[{
                 text:'保存',
                 handler:commonFn.dialogSave
@@ -117,19 +128,19 @@ var commonFn = {
     },
     dialogSave: function(){
         var obj = $('#dialogContent').dialog('options');
-        var id = obj["queryParams"].value; //末级的父级指标id值
+        var id = obj["queryParams"].parentId; //末级的父级指标id值
+        var idFinalKPIOld = obj["queryParams"].textAreaId; //选择前末级的id值
         var idFinalKPI = $("input[name='"+ id +"']:checked").attr('id'); //末级指标id值
         if(idFinalKPI){
             for(var i=0; i<kpiObjectNextGlobal.length; i++){
                 if(kpiObjectNextGlobal[i].kpi_id == idFinalKPI){
-                    if($('#row' + id + 'colName' + (levelNum + 1)).length != 0){
-                        $('#row' + id + 'colName' + (levelNum + 1)).val(kpiObjectNextGlobal[i].kpi_name).attr("id", "row"+ idFinalKPI +"colName" + (levelNum + 1));
+                    if($('#row' + id + 'colName' + (levelNum + 1)).length == 0){
+                        $('#' + idFinalKPIOld).val(kpiObjectNextGlobal[i].kpi_name).attr("id", "row"+ idFinalKPI +"colName" + (levelNum + 1));
                         idTem = "row"+ idFinalKPI +"colName" + (levelNum + 1);
                     }else{
                         $('#' + idTem).val(kpiObjectNextGlobal[i].kpi_name).attr("id", "row"+ idFinalKPI +"colName" + (levelNum + 1));
                         idTem = "row"+ idFinalKPI +"colName" + (levelNum + 1);
                     }
-
                 }
             }
             //$('#dialogContent').dialog('close');
@@ -143,12 +154,12 @@ var commonFn = {
     },
     addTableRow: function(that){
         var id = that.parentNode.id.split("row")[1].split("col")[0];//当前末级指标的父级id
-        var num = that.parentNode.parentNode.lastChild.innerHTML;//获取是第几行
+        var num = parseInt(that.parentNode.parentNode.lastChild.innerHTML);//获取是第几行
 
         //新增一行start
         var trHTML = "<tr>";
-        trHTML += '<td class="cc"><textarea id="row' + id + 'colName'+ (levelNum + 1) +'" class="easyui-validatebox name" required="true" ></textarea>&nbsp;' +  //名称列
-            '<a href="#" class="easyui-linkbutton l-btn l-btn-small" iconcls="icon-select" id="'+ id  +'" onclick="commonFn.showNextKPITree(this.id)" group>' +
+        trHTML += '<td class="cc"><textarea id="row' + id + 'colName'+ (levelNum + 1) +'num'+ commonFn.random(1,100000) +'" class="easyui-validatebox name" required="true" ></textarea>&nbsp;' +  //名称列
+            '<a href="#" class="easyui-linkbutton l-btn l-btn-small" iconcls="icon-select" id="'+ id  +'num'+ commonFn.random(1,100000) +'" onclick="commonFn.showNextKPITree(this.id)" group>' +
             '  <span class="l-btn-left l-btn-icon-left"><span class="l-btn-text l-btn-empty">&nbsp;</span><span class="l-btn-icon icon-select">&nbsp;</span></span>' +
             '</a>' +
             '</td>';
@@ -169,17 +180,17 @@ var commonFn = {
         trHTML += '<td class="serial" colspan="1" style="display:none;"></td>';//序号列
         trHTML += '</tr>';
         //新增一行end
-        $("#select_table tr:eq("+ parseInt(num) +")").after(trHTML);
+        $("#select_table tr:eq("+ num +")").after(trHTML);
 
         //修改父级的合并行
-        var rowspanOld = $("#"+id).attr("rowspan");
-        $("#"+id).attr("rowspan",parseInt(rowspanOld)+1);
+        var rowspanOld = $("#"+ id + "Name"+ levelNum).attr("rowspan");
+        $("#"+ id + "Name"+ levelNum).attr("rowspan",parseInt(rowspanOld)+1);
         for(var i=0 ;i<evalContent.length; i++){
             if(evalContent[i].id == id){
                 for(var j=1; j<levelNum; j++){
                     var parentId = "chr_id" + j ;
-                    var old = $("#"+evalContent[i][parentId]).attr("rowspan");
-                    $("#"+evalContent[i][parentId]).attr("rowspan",parseInt(old)+1);
+                    var old = $("#"+ evalContent[i][parentId] + "Name" + j).attr("rowspan");
+                    $("#"+ evalContent[i][parentId] + "Name" + j).attr("rowspan",parseInt(old)+1);
                 }
 
             }

@@ -147,11 +147,10 @@ TablecommonFn = {
         }
         console.log(data);
 
-        //遍历indicatorArry，向data中塞值
+        //遍历indicatorArray，向data中塞值
         for(var i = 0; i< indicatorArray.length; i ++){
             var num = indicatorArray[i].level;
             var tdIndicatorName = "t" + num;
-            //var tdtdIndicatorweight = "t" + (2 * num);
             var tdIndicatorNameTrCount = "td" + num + "trCount";
             var temp = window[tdIndicatorNameTrCount];
             for(var j = 0; j < indicatorArray[i].rows ; j ++){
@@ -196,7 +195,7 @@ TablecommonFn = {
                     }
                 }
                 if (window[tdKey] == '' || window[tdKey] != kpiObject.id) {
-                    htmlTableBody += '<td class="cc" id="'+ kpiObject.id +'" title="'+ kpiObject.explain +'" rowspan="' + kpiObject.rows + '">' + kpiObject.name  + "（" +  kpiObject.weight+ "分）" + '</td>';
+                    htmlTableBody += '<td class="cc" id="'+ kpiObject.id +'Name'+ j +'" title="'+ kpiObject.explain +'" rowspan="' + kpiObject.rows + '">' + kpiObject.name  + "（" +  kpiObject.weight+ "分）" + '</td>';
                     window[tdKey] = kpiObject.id;
                 }
             }
@@ -210,12 +209,12 @@ TablecommonFn = {
                     kpiObjectFinal = item[m];
                 }
             }
-            htmlTableBody += '<td class="cc" id="'+ kpiObjectFinal.id +'" title="'+ kpiObjectFinal.explain +'" rowspan="' + kpiObjectFinal.rows + '">' + kpiObjectFinal.name  + "（" +  kpiObjectFinal.weight+ "分）" + '</td>';//当前末级指标
+            htmlTableBody += '<td class="cc" id="'+ kpiObjectFinal.id +'Name'+ levelNum +'" title="'+ kpiObjectFinal.explain +'" rowspan="' + kpiObjectFinal.rows + '">' + kpiObjectFinal.name  + "（" +  kpiObjectFinal.weight+ "分）" + '</td>';//当前末级指标
             //渲染当前末级指标列end
 
             //渲染下级待选择指标内容start
-            htmlTableBody += '<td class="cc"><textarea id="row' + kpiObjectFinal.id + 'colName'+ (levelNum + 1) +'" class="easyui-validatebox name" required="true" ></textarea>&nbsp;' +  //名称列
-                '<a href="#" class="easyui-linkbutton" iconCls="icon-select" id="'+ kpiObjectFinal.id  +'" onclick="commonFn.showNextKPITree(this.id)"></a>' +
+            htmlTableBody += '<td class="cc"><textarea id="row' + kpiObjectFinal.id + 'colName'+ (levelNum + 1) +'num'+ commonFn.random(1,100000) +'" class="easyui-validatebox name" required="true" ></textarea>&nbsp;' +  //名称列
+                '<a href="#" class="easyui-linkbutton" iconCls="icon-select" id="'+ kpiObjectFinal.id  +'num'+ commonFn.random(1,100000) +'" onclick="commonFn.showNextKPITree(this.id)"></a>' +
                 '</td>';
             htmlTableBody += '<td class="cc"><textarea id="row' + kpiObjectFinal.id + 'colWeight" class="easyui-validatebox weight" required="true" onchange="" ></textarea></td>';//权重列
             htmlTableBody += '<td class="aa" colspan="5"><textarea id="row' + kpiObjectFinal.id + 'colStandard" class="easyui-validatebox standard" required="true" onchange="" ></textarea></td>';//评分标准列
