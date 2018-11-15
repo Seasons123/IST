@@ -102,10 +102,10 @@ var commonFn = {
                     for(var i=0; i<len; i++){
                         if(id == map.data[i].id){
                             kpiObjectNextGlobal = map.data[i].kpi_final;
-                            for(var m=0; m < kpiObjectNextGlobal.length; m++){//末级指标评分标准
+                            for(var m=0; m < kpiObjectNextGlobal.next_kpi_list.length; m++){//末级指标评分标准
                                 htmlDialog += '<p style="width:300px;">' +
-                                    '<label>' +  kpiObjectNextGlobal[m].kpi_name + '</label>' +
-                                    '<input type="radio" class="nextKPISelect" id="'+ kpiObjectNextGlobal[m].kpi_id + '" name="'+ id +'" value="' + m + '" onclick="commonFn.changeNextKPISelect(this.name,this.value)" />' +
+                                    '<label>' +  kpiObjectNextGlobal.next_kpi_list[m].kpi_name + '</label>' +
+                                    '<input type="radio" class="nextKPISelect" id="'+ kpiObjectNextGlobal.next_kpi_list[m].kpi_id + '" name="'+ id +'" value="' + m + '" onclick="commonFn.changeNextKPISelect(this.name,this.value)" />' +
                                     '</p>';
                             }
                         }
@@ -132,18 +132,12 @@ var commonFn = {
         var idFinalKPIOld = obj["queryParams"].textAreaId; //选择前末级的id值
         var idFinalKPI = $("input[name='"+ id +"']:checked").attr('id'); //末级指标id值
         if(idFinalKPI){
-            for(var i=0; i<kpiObjectNextGlobal.length; i++){
-                if(kpiObjectNextGlobal[i].kpi_id == idFinalKPI){
-                    if($('#row' + id + 'colName' + (levelNum + 1)).length == 0){
-                        $('#' + idFinalKPIOld).val(kpiObjectNextGlobal[i].kpi_name).attr("id", "row"+ idFinalKPI +"colName" + (levelNum + 1));
-                        idTem = "row"+ idFinalKPI +"colName" + (levelNum + 1);
-                    }else{
-                        $('#' + idTem).val(kpiObjectNextGlobal[i].kpi_name).attr("id", "row"+ idFinalKPI +"colName" + (levelNum + 1));
-                        idTem = "row"+ idFinalKPI +"colName" + (levelNum + 1);
-                    }
+            for(var i=0; i<kpiObjectNextGlobal.next_kpi_list.length; i++) {
+                if (kpiObjectNextGlobal.next_kpi_list[i].kpi_id == idFinalKPI) {
+                    $('#' + idFinalKPIOld).text(kpiObjectNextGlobal.next_kpi_list[i].kpi_name).attr("id", idFinalKPI);
+                    obj["queryParams"].textAreaId = idFinalKPI; //更新选择前末级的id值
                 }
-            }
-            //$('#dialogContent').dialog('close');
+             }
         }else{
             $.messager.alert('信息', '请选择末级指标', 'info');
         }

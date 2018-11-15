@@ -5,7 +5,7 @@ var levelNum;
 var kpiLevelName = ["一级指标","二级指标","三级指标","四级指标","五级指标","六级指标","七级指标","八级指标","九级指标","十级指标"];
 var htmlTableBody = '<tr>';
 var kpiObjectNextGlobal;
-var idTem = ""; //用于方法dialogSave
+
 TablecommonFn = {
 
     initTableHeader: function () {
