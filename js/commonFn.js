@@ -134,8 +134,9 @@ var commonFn = {
         if(idFinalKPI){
             for(var i=0; i<kpiObjectNextGlobal.next_kpi_list.length; i++) {
                 if (kpiObjectNextGlobal.next_kpi_list[i].kpi_id == idFinalKPI) {
-                    $('#' + idFinalKPIOld).text(kpiObjectNextGlobal.next_kpi_list[i].kpi_name).attr("id", idFinalKPI);
-                    obj["queryParams"].textAreaId = idFinalKPI; //更新选择前末级的id值
+                    var idFinalKPINew =  idFinalKPI + "num" + commonFn.random(1,100000); //有可能末级指标重复选择，保证dom元素id值唯一性
+                    $('#' + idFinalKPIOld).text(kpiObjectNextGlobal.next_kpi_list[i].kpi_name).attr("id", idFinalKPINew);
+                    obj["queryParams"].textAreaId = idFinalKPINew; //更新选择前末级的id值
                 }
              }
         }else{
