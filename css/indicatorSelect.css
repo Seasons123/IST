@@ -76,6 +76,11 @@ textarea{
     font-weight:bold;
     text-align:center;
 }
+.ee{
+    text-align: left;
+    background:#D1EEEE;
+    padding-left: 4px;
+}
 input.text{
     text-align:center;
 }

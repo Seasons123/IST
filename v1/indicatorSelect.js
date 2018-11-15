@@ -16,7 +16,7 @@ TablecommonFn = {
         }
         html += '<th id="colWeight" class="aa" width="100px" >分数</th>';
         html += '<th id="colStander" class="aa" width="500px" id="003" colspan="5">评分标准</th>';
-        html += '<th id="colOperation" class="aa" width="500px" id="003" colspan="5">操作</th>';
+        html += '<th id="colOperation" class="aa" width="400px" id="003" colspan="5">操作</th>';
         html += '<th id="colOperation" class="aa" width="10px" id="003" colspan="1" style="display:none;">序号</th>';
         html += '</tr>';
         $('#tableHeader').append(html);
@@ -220,10 +220,10 @@ TablecommonFn = {
             htmlTableBody += '<td class="aa" colspan="5"><textarea id="row' + kpiObjectFinal.id + 'colStandard" class="easyui-validatebox standard" required="true" onchange="" ></textarea></td>';//评分标准列
             //渲染下级待选择指标内容end
 
-            htmlTableBody += '<td id="row' + kpiObjectFinal.id + 'colOperation" class="cc" colspan="5">' +
+            htmlTableBody += '<td id="row' + kpiObjectFinal.id + 'colOperation" class="ee" colspan="5">' +
                 '<a href="#" class="easyui-linkbutton" iconCls="icon-edit" id="editBtn" onclick="commonFn.editContent()">修改</a>&nbsp;' +
                 '<a href="#" class="easyui-linkbutton" iconCls="icon-add" id="addBtn" onclick="commonFn.addTableRow(this)">增加</a>&nbsp;' +
-                '<a href="#" class="easyui-linkbutton" iconCls="icon-remove" id="removeBtn" onclick="commonFn.removeTableRow()">删除</a>' +
+                //'<a href="#" class="easyui-linkbutton" iconCls="icon-remove" id="removeBtn" onclick="commonFn.removeTableRow(this)">删除</a>' +
                 '</td>';//最后一列操作列
             htmlTableBody += '<td class="serial" colspan="1" style="display:none;"></td>';//序号列
             htmlTableBody += '</tr>';

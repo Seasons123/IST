@@ -161,14 +161,14 @@ var commonFn = {
         trHTML += '<td class="cc"><textarea id="row' + id + 'colWeight" class="easyui-validatebox weight" required="true" onchange="" ></textarea></td>';//权重列
         trHTML += '<td class="aa" colspan="5"><textarea id="row' + id + 'colStandard" class="easyui-validatebox standard" required="true" onchange="" ></textarea></td>';//评分标准列
 
-        trHTML += '<td id="row' + id + 'colOperation" class="cc" colspan="5">' +
+        trHTML += '<td id="row' + id + 'colOperation" class="ee" colspan="5">' +
             '<a href="#" class="easyui-linkbutton l-btn l-btn-small" iconcls="icon-edit" id="editBtn" onclick="commonFn.editContent()" group>' +
             '  <span class="l-btn-left l-btn-icon-left"><span class="l-btn-text">修改</span><span class="l-btn-icon icon-edit">&nbsp;</span></span>' +
             '</a>' +
             '<a href="#" class="easyui-linkbutton l-btn l-btn-small" iconcls="icon-add" id="addBtn" onclick="commonFn.addTableRow(this)" group>' +
             '  <span class="l-btn-left l-btn-icon-left"><span class="l-btn-text">增加</span><span class="l-btn-icon icon-add">&nbsp;</span></span>' +
             '</a>' +
-            '<a href="#" class="easyui-linkbutton l-btn l-btn-small" iconcls="icon-remove" id="removeBtn" onclick="commonFn.removeTableRow()" group>' +
+            '<a href="#" class="easyui-linkbutton l-btn l-btn-small" iconcls="icon-remove" id="removeBtn" onclick="commonFn.removeTableRow(this)" group>' +
             '  <span class="l-btn-left l-btn-icon-left"><span class="l-btn-text">删除</span><span class="l-btn-icon icon-remove">&nbsp;</span></span>' +
             '</a>' +
             '</td>';//最后一列操作列
@@ -187,10 +187,31 @@ var commonFn = {
                     var old = $("#"+ evalContent[i][parentId] + "Name" + j).attr("rowspan");
                     $("#"+ evalContent[i][parentId] + "Name" + j).attr("rowspan",parseInt(old)+1);
                 }
-
             }
         }
         commonFn.initSerial();//序列号重排
+    },
+    removeTableRow: function(that){
+        var id = that.parentNode.id.split("row")[1].split("col")[0];//当前末级指标的父级id
+        $.messager.confirm('Confirm','确认删除?',function(r){
+            if (r){
+                //删除该行
+                that.parentNode.parentNode.remove();
+                //修改父级的合并行
+                var rowspanOld = $("#"+ id + "Name"+ levelNum).attr("rowspan");
+                $("#"+ id + "Name"+ levelNum).attr("rowspan",parseInt(rowspanOld)-1);
+                for(var i=0 ;i<evalContent.length; i++){
+                    if(evalContent[i].id == id){
+                        for(var j=1; j<levelNum; j++){
+                            var parentId = "chr_id" + j ;
+                            var old = $("#"+ evalContent[i][parentId] + "Name" + j).attr("rowspan");
+                            $("#"+ evalContent[i][parentId] + "Name" + j).attr("rowspan",parseInt(old)-1);
+                        }
+                    }
+                }
+                commonFn.initSerial();//序列号重排
+            }
+        });
     },
     initSerial: function(){
         var i = 1;
