@@ -1,6 +1,6 @@
 var tdNum = 0;
-var kpiTableInfoGlobal={};
-var evalContent={};
+var kpiTableInfoGlobal=[];
+var evalContent=[];
 var levelNum;
 var kpiLevelName = ["一级指标","二级指标","三级指标","四级指标","五级指标","六级指标","七级指标","八级指标","九级指标","十级指标"];
 var htmlTableBody = '<tr>';
@@ -24,14 +24,16 @@ TablecommonFn = {
 
     //不确定共有几级指标，表格左侧内容动态生成+获取分值显示
     initTable: function (tableInfo) {
-        kpiTableInfoGlobal = tableInfo;
         //行排序
-        evalContent = tableInfo.kpi_selected_content.sort(commonFn.sortByPro('order_num'));
+        kpiTableInfoGlobal = tableInfo.sort(commonFn.sortByPro('orderNum'));
+        for(var i = 0;i < kpiTableInfoGlobal.length ;i ++) {
+            evalContent.push(kpiTableInfoGlobal[i].kpi);   //每次都push一行
+        }
         console.log(evalContent);
         //表格左侧json数据转换start
         var data = [];
         var trNum =evalContent.length;
-        levelNum = parseInt(evalContent[0].kpi_level); //一共有几级指标
+        levelNum = parseInt(evalContent[0].kpiLevel); //一共有几级指标
         TablecommonFn.initTableHeader(levelNum);
         $("#colName" + (levelNum + 1)).css("width","200px");
         tdNum = levelNum ;
@@ -49,24 +51,24 @@ TablecommonFn = {
             create_indicatorArray(i); //创建指标对象
         }
         function create_parentIdValueCount(num){
-            var parentId = "chr_id" + num ;
+            var parent = "parentKpi" + num ;
             var parentIdValue = ""; //id的值，用于对比
             for(var m = 0;m < trNum; m++) {
                 for (var n in evalContent[m]) {
-                    if ((n == parentId && parentIdValue == "")|| (n == parentId && parentIdValue != evalContent[m][n])) {
-                        parentIdValue = evalContent[m][n];
+                    if ((n == parent && parentIdValue == "")|| (n == parent && parentIdValue != evalContent[m][n].id)) {
+                        parentIdValue = evalContent[m][n].id;
                         window[parentIdValue + "Count"] = 0;
                     }
                 }
             }
         }
         function mergeRowsCal(num) {
-            var parentId = "chr_id" + num ;
+            var parent = "parentKpi" + num ;
             var parentIdValue = "";
             for(var m = 0;m < trNum + 1; m++) {
                 for (var n in evalContent[m]) {
-                    if (n == parentId) {
-                        parentIdValue = evalContent[m][n];
+                    if (n == parent) {
+                        parentIdValue = evalContent[m][n].id;
                         window[parentIdValue + "Count"]++;
                     }
                 }
@@ -74,46 +76,24 @@ TablecommonFn = {
 
         }
         function create_indicatorArray(num){
-            var parentId = "chr_id" + num ;
-            var indicatorsLevel = num ;
-            var parentIdValue = ""; //id的值
-            var parentIdName = "kpi_name" + num;
-            var parentIdNameValue = "";
-            var parentIdweight = "kpi_weight" + num;
-            var parentIdweightValue = "";
-            var parentIdExplain = "kpi_explain" + num;
-            var parentIdExplainValue = "";
+            var parent = "parentKpi" + num ;
+            var parentIdValue = "";
             for(var m = 0;m < trNum; m++) {
                 for (var n in evalContent[m]) {
-                    if ((n == parentId && parentIdValue == "")|| (n == parentId && parentIdValue != evalContent[m][n])) {
+                    if ((n == parent && parentIdValue == "")|| (n == parent && parentIdValue != evalContent[m][n].id)) {
                         //定义对象,拿三个数据：指标的id、指标的名字、指标的合并行
-                        parentIdValue = evalContent[m][n];
+                        parentValue = evalContent[m][n];
+                        parentIdValue = evalContent[m][n].id;
                         mergeRows = window[parentIdValue + "Count"];
-                        for (var n in evalContent[m]) {
-                            if (n == parentIdName) {
-                                parentIdNameValue = evalContent[m][n];
-                            }
-                        }
-                        for (var n in evalContent[m]) {
-                            if (n == parentIdweight) {
-                                parentIdweightValue = evalContent[m][n];
-                            }
-                        }
-                        for (var n in evalContent[m]) {
-                            if (n == parentIdExplain) {
-                                parentIdExplainValue = evalContent[m][n];
-                            }
-                        }
                         indicatorObject = {
-                            id: parentIdValue,
-                            level: indicatorsLevel,
-                            name: parentIdNameValue,
+                            id: parentValue.id,
+                            level: num,
+                            name: parentValue.kpiName,
                             rows: mergeRows,
-                            weight: parentIdweightValue,
-                            explain: parentIdExplainValue
+                            weight: parentValue.kpiWeight,
+                            explain: parentValue.kpiExplain
                         };
                         indicatorArray.push(indicatorObject);
-
                     }
                 }
             }
@@ -122,14 +102,14 @@ TablecommonFn = {
         for(var i= 0;i < trNum; i++) {
             indicatorObject = {
                 id: evalContent[i].id,
-                level: evalContent[i].kpi_level,
-                name: evalContent[i].kpi_name,
+                level: evalContent[i].kpiLevel,
+                name: evalContent[i].kpiName,
                 rows: 1,
-                weight: evalContent[i].kpi_weight,
-                explain: evalContent[i].kpi_explain,
-                standard: evalContent[i].kpi_stand,
-                type: evalContent[i].value_type,
-                finalKPI: evalContent[i].kpi_final
+                weight: evalContent[i].kpiWeight,
+                explain: evalContent[i].kpiExplain,
+                standard: evalContent[i].kpiStand,
+                type: evalContent[i].valueType,
+                finalKPI: []
             };
             indicatorArray.push(indicatorObject);
         }
@@ -166,7 +146,7 @@ TablecommonFn = {
                             type: indicatorArray[i].type,
                             finalKPI: indicatorArray[i].finalKPI
                         };
-                        window[tdIndicatorNameTrCount] ++ ;
+                        window[tdIndicatorNameTrCount] = window[tdIndicatorNameTrCount] + 1 ;
                         temp = window[tdIndicatorNameTrCount];
                     }
                 }
@@ -236,20 +216,19 @@ TablecommonFn = {
 
 var getInfo = function(){
     var data = {
-        "eval_user_id":"{E6BE8909-F454-4695-B878-EF7B6AF10304}",
-        "eval_obj_id":"{HGPC52C1-BE68-4EE4-9955-E6B43AED0ABC}"
+        "fetchProperties":"*,kpi[*,parent[id,kpiName,kpiWeight,kpiLevel,kpiExplain],parentLeval1[id,kpiName,kpiWeight,kpiLevel,kpiExplain],parentLeval2[id,kpiName,kpiWeight,kpiLevel,kpiExplain],parentLeval3[id,kpiName,kpiWeight,kpiLevel,kpiExplain],parentLeval4[id,kpiName,kpiWeight,kpiLevel,kpiExplain]]",
     };
     $.ajax({
         type: 'GET',
-        url: formUrl.getIndicator,
+        url: formUrl.KpiConfig,
         dataType: 'JSON',
         data: data,
         async: false,
         success: function (map) {
-            if(map.status == '0'){
-                TablecommonFn.initTable(map.data.kpi_config_info);//使用本地json数据
+            if(map.message){
+                $.messager.alert('错误', map.message, 'error');
             }else{
-                ip.ipInfoJump(map.error_msg, 'error');
+                TablecommonFn.initTable(map);
             }
         }
     });

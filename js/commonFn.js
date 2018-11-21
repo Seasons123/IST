@@ -183,9 +183,9 @@ var commonFn = {
         for(var i=0 ;i<evalContent.length; i++){
             if(evalContent[i].id == id){
                 for(var j=1; j<levelNum; j++){
-                    var parentId = "chr_id" + j ;
-                    var old = $("#"+ evalContent[i][parentId] + "Name" + j).attr("rowspan");
-                    $("#"+ evalContent[i][parentId] + "Name" + j).attr("rowspan",parseInt(old)+1);
+                    var parentId = "parentKpi" + j ;
+                    var old = $("#"+ evalContent[i][parentId].id + "Name" + j).attr("rowspan");
+                    $("#"+ evalContent[i][parentId].id + "Name" + j).attr("rowspan",parseInt(old)+1);
                 }
             }
         }
@@ -203,9 +203,9 @@ var commonFn = {
                 for(var i=0 ;i<evalContent.length; i++){
                     if(evalContent[i].id == id){
                         for(var j=1; j<levelNum; j++){
-                            var parentId = "chr_id" + j ;
-                            var old = $("#"+ evalContent[i][parentId] + "Name" + j).attr("rowspan");
-                            $("#"+ evalContent[i][parentId] + "Name" + j).attr("rowspan",parseInt(old)-1);
+                            var parentId = "parentKpi" + j ;
+                            var old = $("#"+ evalContent[i][parentId].id + "Name" + j).attr("rowspan");
+                            $("#"+ evalContent[i][parentId].id + "Name" + j).attr("rowspan",parseInt(old)-1);
                         }
                     }
                 }
