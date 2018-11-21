@@ -85,7 +85,7 @@ var commonFn = {
                 handler:commonFn.dialogClose
             }]
         });
-        var data = {
+        var data = {  //当前kpi的id，需要向后台发送的唯一请求参数
             "kpi_id":id
         };
         $.ajax({
@@ -95,24 +95,24 @@ var commonFn = {
             data: data,
             async: false,
             success: function (map) {
-                if(map.status == '0'){
+                if(map.message){
+                    $.messager.alert('错误', map.message, 'error');
+                }else{
                     $('#dialogContent').dialog('open').html("");
                     var htmlDialog = "";
-                    var len = map.data.length;
+                    var len = map.length;
                     for(var i=0; i<len; i++){
-                        if(id == map.data[i].id){
-                            kpiObjectNextGlobal = map.data[i].kpi_final;
-                            for(var m=0; m < kpiObjectNextGlobal.next_kpi_list.length; m++){//末级指标评分标准
+                        if(id == map[i].id){
+                            kpiObjectNextGlobal = map[i].next_kpi_list;
+                            for(var m=0; m < kpiObjectNextGlobal.length; m++){//末级指标评分标准
                                 htmlDialog += '<p style="width:300px;">' +
-                                    '<label>' +  kpiObjectNextGlobal.next_kpi_list[m].kpi_name + '</label>' +
-                                    '<input type="radio" class="nextKPISelect" id="'+ kpiObjectNextGlobal.next_kpi_list[m].kpi_id + '" name="'+ id +'" value="' + m + '" onclick="commonFn.changeNextKPISelect(this.name,this.value)" />' +
+                                    '<label>' +  kpiObjectNextGlobal[m].kpiName + '</label>' +
+                                    '<input type="radio" class="nextKPISelect" id="'+ kpiObjectNextGlobal[m].id + '" name="'+ id +'" value="' + m + '" onclick="commonFn.changeNextKPISelect(this.name,this.value)" />' +
                                     '</p>';
                             }
                         }
                     }
-                   $('#dialogContent').append(htmlDialog);
-                }else{
-                    ip.ipInfoJump(map.error_msg, 'error');
+                    $('#dialogContent').append(htmlDialog);
                 }
             }
         });
@@ -132,10 +132,10 @@ var commonFn = {
         var idFinalKPIOld = obj["queryParams"].textAreaId; //选择前末级的id值
         var idFinalKPI = $("input[name='"+ id +"']:checked").attr('id'); //末级指标id值
         if(idFinalKPI){
-            for(var i=0; i<kpiObjectNextGlobal.next_kpi_list.length; i++) {
-                if (kpiObjectNextGlobal.next_kpi_list[i].kpi_id == idFinalKPI) {
+            for(var i=0; i<kpiObjectNextGlobal.length; i++) {
+                if (kpiObjectNextGlobal[i].id == idFinalKPI) {
                     var idFinalKPINew =  idFinalKPI + "num" + commonFn.random(1,100000); //有可能末级指标重复选择，保证dom元素id值唯一性
-                    $('#' + idFinalKPIOld).text(kpiObjectNextGlobal.next_kpi_list[i].kpi_name).attr("id", idFinalKPINew);
+                    $('#' + idFinalKPIOld).text(kpiObjectNextGlobal[i].kpiName).attr("id", idFinalKPINew);
                     obj["queryParams"].textAreaId = idFinalKPINew; //更新选择前末级的id值
                 }
              }
