@@ -216,13 +216,18 @@ TablecommonFn = {
 
 var getInfo = function(){
     var data = {
-        "fetchProperties":"*,kpi[*,parent[id,kpiName,kpiWeight,kpiLevel,kpiExplain],parentLeval1[id,kpiName,kpiWeight,kpiLevel,kpiExplain],parentLeval2[id,kpiName,kpiWeight,kpiLevel,kpiExplain],parentLeval3[id,kpiName,kpiWeight,kpiLevel,kpiExplain],parentLeval4[id,kpiName,kpiWeight,kpiLevel,kpiExplain]]",
+        "fetchProperties":"*,kpi[*,parent[id,kpiName,kpiWeight,kpiLevel,kpiExplain],parentLevel1[id,kpiName,kpiWeight,kpiLevel,kpiExplain],parentLevel2[id,kpiName,kpiWeight,kpiLevel,kpiExplain],parentLevel3[id,kpiName,kpiWeight,kpiLevel,kpiExplain],parentLevel4[id,kpiName,kpiWeight,kpiLevel,kpiExplain]]",
     };
     $.ajax({
-        type: 'GET',
+        type: 'get',
         url: formUrl.KpiConfig,
-        dataType: 'JSON',
-        data: data,
+        dataType: 'json',
+        data:data,
+        contentType: "application/json; charset=utf-8",
+        xhrFields: {
+            withCredentials: true
+        },
+        crossDomain: true,
         async: false,
         success: function (map) {
             if(map.message){
