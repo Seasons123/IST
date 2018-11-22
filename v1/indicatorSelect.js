@@ -216,7 +216,7 @@ TablecommonFn = {
 
 var getInfo = function(){
     var data = {
-        "fetchProperties":"*,kpi[*,parent[id,kpiName,kpiWeight,kpiLevel,kpiExplain],parentLevel1[id,kpiName,kpiWeight,kpiLevel,kpiExplain],parentLevel2[id,kpiName,kpiWeight,kpiLevel,kpiExplain],parentLevel3[id,kpiName,kpiWeight,kpiLevel,kpiExplain],parentLevel4[id,kpiName,kpiWeight,kpiLevel,kpiExplain]]",
+        "fetchProperties":"*,kpi[*,parent[id,kpiName,kpiWeight,kpiLevel,kpiExplain],parentKpi1[id,kpiName,kpiWeight,kpiLevel,kpiExplain],parentKpi2[id,kpiName,kpiWeight,kpiLevel,kpiExplain],parentKpi3[id,kpiName,kpiWeight,kpiLevel,kpiExplain],parentKpi4[id,kpiName,kpiWeight,kpiLevel,kpiExplain]]",
     };
     $.ajax({
         type: 'get',
