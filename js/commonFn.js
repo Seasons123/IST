@@ -86,20 +86,25 @@ var commonFn = {
             }]
         });
         var data = {  //当前kpi的id，需要向后台发送的唯一请求参数
-            "kpi_id":id
+            "parent.id":id
         };
         $.ajax({
-            type: 'GET',
+            type: 'get',
             url: formUrl.queryNextKpi,
-            dataType: 'JSON',
-            data: data,
-            async: false,
+            dataType: 'json',
+            data:data,
+            contentType: "application/json; charset=utf-8",
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
             success: function (map) {
                 if(map.message){
                     $.messager.alert('错误', map.message, 'error');
                 }else{
                     $('#dialogContent').dialog('open').html("");
                     var htmlDialog = "";
+                    /*//1.使用本地json数据start
                     var len = map.length;
                     for(var i=0; i<len; i++){
                         if(id == map[i].id){
@@ -112,6 +117,16 @@ var commonFn = {
                             }
                         }
                     }
+                    //1.使用本地json数据end*/
+                    //2.使用本地服务器数据start
+                    kpiObjectNextGlobal = map;
+                    for(var m=0; m < kpiObjectNextGlobal.length; m++){//末级指标评分标准
+                        htmlDialog += '<p style="width:300px;">' +
+                            '<label>' +  kpiObjectNextGlobal[m].kpiName + '</label>' +
+                            '<input type="radio" class="nextKPISelect" id="'+ kpiObjectNextGlobal[m].id + '" name="'+ id +'" value="' + m + '" onclick="commonFn.changeNextKPISelect(this.name,this.value)" />' +
+                            '</p>';
+                    }
+                    //2.使用本地服务器数据end
                     $('#dialogContent').append(htmlDialog);
                 }
             }
