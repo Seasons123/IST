@@ -2,86 +2,86 @@
     "id": "8",
     "next_kpi_list":[
         {
-          "id": "pcy001",
+          "id": "001",
           "kpiName": "平台试运行进度",
           "kpiLevel": "4",
           "kpiWeight": 0,
           "kpiExplain": "平台试运行进度：一是部分部门对试运行工作认识不到位，重视程度不够。个别单位至今仍未使用市平台录入业务，办件量为零，严重影响全县整体进度；二是个别部门至今仍未接入全市电子政务网，导致市平台无法登陆使用；三是部分部门业务未全部录入市平台，特别是使用省以上自建系统办理业务的单位，二次录入不及时，存在选择性录入等问题。",
           "kpiStand": [
             {
-              "id": "pcy001001",
+              "id": "21",
               "kpiStand_name": "平台试运行进度按计划进行，得2分"
             },
             {
-              "id": "pcy001002",
+              "id": "22",
               "kpiStand_name": "平台试运行进度未按计划进行，得0-2分"
             }
           ]
         },
         {
-          "id": "pcy002",
+          "id": "002",
           "kpiName": "预计工程的完成情况",
           "kpiExplain":"预计工程的完成情况",
           "kpiLevel": "4",
           "kpiWeight": 0,
           "kpiStand": [
             {
-              "id": "pcy002001",
+              "id": "23",
               "kpiStand_name": "平台试运行进度按计划进行，得2分"
             },
             {
-              "id": "pcy002002",
+              "id": "24",
               "kpiStand_name": "平台试运行进度未按计划进行，得0-2分"
             }
           ]
         },
         {
-          "id": "pcy003",
+          "id": "003",
           "kpiName": "高铁工程的完成情况",
           "kpiExplain": "高铁工程的完成情况",
           "kpiLevel": "4",
           "kpiWeight": 0,
           "kpiStand": [
             {
-              "id": "pcy003001",
+              "id": "25",
               "kpiStand_name": "平台试运行进度按计划进行，得2分"
             },
             {
-              "id": "pcy003002",
+              "id": "26",
               "kpiStand_name": "平台试运行进度未按计划进行，得0-2分"
             }
           ]
         },
         {
-          "id": "pcy004",
+          "id": "004",
           "kpiName": "交通工程的完成情况",
           "kpiExplain": "交通工程的完成情况",
           "kpiLevel": "4",
           "kpiWeight": 0,
           "kpiStand": [
             {
-              "id": "pcy004001",
+              "id": "27",
               "kpiStand_name": "平台试运行进度按计划进行，得2分"
             },
             {
-              "id": "pcy004002",
+              "id": "28",
               "kpiStand_name": "平台试运行进度未按计划进行，得0-2分"
             }
           ]
         },
         {
-          "id": "pcy005",
+          "id": "005",
           "kpiName": "水利工程的完成情况",
           "kpiExplain": "水利工程的完成情况",
           "kpiLevel": "4",
           "kpiWeight": 0,
           "kpiStand": [
             {
-              "id": "pcy005001",
+              "id": "29",
               "kpiStand_name": "平台试运行进度按计划进行，得2分"
             },
             {
-              "id": "pcy005002",
+              "id": "30",
               "kpiStand_name": "平台试运行进度未按计划进行，得0-2分"
             }
           ]
@@ -92,86 +92,86 @@
     "id": "9",
     "next_kpi_list": [
         {
-          "id": "pcy011",
+          "id": "011",
           "kpiName": "高铁工程的完成质量",
           "kpiLevel": "4",
           "kpiWeight": 0,
           "kpiExplain": "高铁工程的完成质量",
           "kpiStand": [
             {
-              "id": "pcy011001",
+              "id": "31",
               "kpiStand_name": "平台试运行进度按计划进行，得2分"
             },
             {
-              "id": "pcy011002",
+              "id": "32",
               "kpiStand_name": "平台试运行进度未按计划进行，得0-2分"
             }
           ]
         },
         {
-          "id": "pcy012",
+          "id": "012",
           "kpiName": "执行机构健全性",
           "kpiExplain": "执行机构健全性",
           "kpiLevel": "4",
           "kpiWeight": 0,
           "kpiStand": [
             {
-              "id": "pcy012001",
+              "id": "33",
               "kpiStand_name": "平台试运行进度按计划进行，得2分"
             },
             {
-              "id": "pcy012002",
+              "id": "34",
               "kpiStand_name": "平台试运行进度未按计划进行，得0-2分"
             }
           ]
         },
         {
-          "id": "pcy013",
+          "id": "013",
           "kpiName": "人员分配明确性",
           "kpiExplain": "人员分配明确性",
           "kpiLevel": "4",
           "kpiWeight": 0,
           "kpiStand": [
             {
-              "id": "pcy013001",
+              "id": "35",
               "kpiStand_name": "平台试运行进度按计划进行，得2分"
             },
             {
-              "id": "pcy013002",
+              "id": "36",
               "kpiStand_name": "平台试运行进度未按计划进行，得0-2分"
             }
           ]
         },
         {
-          "id": "pcy014",
+          "id": "014",
           "kpiName": "会计核算的合规性",
           "kpiExplain": "会计核算的合规性",
           "kpiLevel": "4",
           "kpiWeight": 0,
           "kpiStand": [
             {
-              "id": "pcy014001",
+              "id": "37",
               "kpiStand_name": "平台试运行进度按计划进行，得2分"
             },
             {
-              "id": "pcy014002",
+              "id": "38",
               "kpiStand_name": "平台试运行进度未按计划进行，得0-2分"
             }
           ]
         },
         {
-          "id": "pcy015",
+          "id": "015",
           "kpiName": "资金到位的及时性",
           "kpiExplain": "资金到位的及时性",
           "kpiLevel": "4",
           "kpiWeight": 0,
           "kpiStand": [
             {
-              "id": "pcy015001",
+              "id": "39",
               "kpiStand_name": "平台试运行进度按计划进行，得2分"
             },
             {
-              "id": "pcy015002",
+              "id": "40",
               "kpiStand_name": "平台试运行进度未按计划进行，得0-2分"
             }
           ]
@@ -182,66 +182,66 @@
     "id": "10",
     "next_kpi_list":[
         {
-          "id": "pcy021",
+          "id": "021",
           "kpiName": "增强道路通行能力",
           "kpiLevel": "4",
           "kpiWeight": 0,
           "kpiExplain": "增强道路通行能力",
           "kpiStand": [
             {
-              "id": "pcy021001",
+              "id": "41",
               "kpiStand_name": "平台试运行进度按计划进行，得2分"
             },
             {
-              "id": "pcy021002",
+              "id": "42",
               "kpiStand_name": "平台试运行进度未按计划进行，得0-2分"
             }
           ]
         },
         {
-          "id": "pcy022",
+          "id": "022",
           "kpiName": "完善道路交通安全环境",
           "kpiLevel": "4",
           "kpiWeight": 0,
           "kpiStand": [
             {
-              "id": "pcy022001",
+              "id": "43",
               "kpiStand_name": "平台试运行进度按计划进行，得2分"
             },
             {
-              "id": "pcy022002",
+              "id": "44",
               "kpiStand_name": "平台试运行进度未按计划进行，得0-2分"
             }
           ]
         },
         {
-          "id": "pcy023",
+          "id": "023",
           "kpiName": "沿线地方资源开发作用",
           "kpiLevel": "4",
           "kpiWeight": 0,
           "kpiStand": [
             {
-              "id": "pcy023001",
+              "id": "45",
               "kpiStand_name": "平台试运行进度按计划进行，得2分"
             },
             {
-              "id": "pcy023002",
+              "id": "46",
               "kpiStand_name": "平台试运行进度未按计划进行，得0-2分"
             }
           ]
         },
         {
-          "id": "pcy024",
+          "id": "024",
           "kpiName": "对周边居民出行发挥作用",
           "kpiLevel": "4",
           "kpiWeight": 0,
           "kpiStand": [
             {
-              "id": "pcy024001",
+              "id": "47",
               "kpiStand_name": "平台试运行进度按计划进行，得2分"
             },
             {
-              "id": "pcy024002",
+              "id": "48",
               "kpiStand_name": "平台试运行进度未按计划进行，得0-2分"
             }
           ]
@@ -252,82 +252,82 @@
     "id": "11",
     "next_kpi_list":[
         {
-          "id": "pcy031",
+          "id": "031",
           "kpiName": "对机场周边经济发展的影响",
           "kpiLevel": "4",
           "kpiWeight": 0,
           "kpiExplain": "",
           "kpiStand": [
             {
-              "id": "pcy031001",
+              "id": "49",
               "kpiStand_name": "平台试运行进度按计划进行，得2分"
             },
             {
-              "id": "pcy031002",
+              "id": "50",
               "kpiStand_name": "平台试运行进度未按计划进行，得0-2分"
             }
           ]
         },
         {
-          "id": "pcy032",
+          "id": "032",
           "kpiName": "提高车辆行驶质量",
           "kpiLevel": "4",
           "kpiWeight": 0,
           "kpiStand": [
             {
-              "id": "pcy032001",
+              "id": "51",
               "kpiStand_name": "平台试运行进度按计划进行，得2分"
             },
             {
-              "id": "pcy032002",
+              "id": "52",
               "kpiStand_name": "平台试运行进度未按计划进行，得0-2分"
             }
           ]
         },
         {
-          "id": "pcy033",
+          "id": "033",
           "kpiName": "实施过程合理性",
           "kpiLevel": "4",
           "kpiWeight": 0,
           "kpiStand": [
             {
-              "id": "pcy033001",
+              "id": "53",
               "kpiStand_name": "平台试运行进度按计划进行，得2分"
             },
             {
-              "id": "pcy033002",
+              "id": "54",
               "kpiStand_name": "平台试运行进度未按计划进行，得0-2分"
             }
           ]
         },
         {
-          "id": "pcy034",
+          "id": "034",
           "kpiName": "相关法律法规的有效性",
           "kpiLevel": "4",
           "kpiWeight": 0,
           "kpiStand": [
             {
-              "id": "pcy034001",
+              "id": "55",
               "kpiStand_name": "平台试运行进度按计划进行，得2分"
             },
             {
-              "id": "pcy034002",
+              "id": "56",
               "kpiStand_name": "平台试运行进度未按计划进行，得0-2分"
             }
           ]
         },
         {
-          "id": "pcy035",
+          "id": "035",
           "kpiName": "项目申报合规性",
           "kpiLevel": "4",
           "kpiWeight": 0,
           "kpiStand": [
             {
-              "id": "pcy035001",
+              "id": "57",
               "kpiStand_name": "平台试运行进度按计划进行，得2分"
             },
             {
-              "id": "pcy035002",
+              "id": "58",
               "kpiStand_name": "平台试运行进度未按计划进行，得0-2分"
             }
           ]
@@ -338,82 +338,82 @@
       "id": "12",
       "next_kpi_list": [
           {
-            "id": "pcy041",
+            "id": "041",
             "kpiName": "产出影响1平台正式运行进度",
             "kpiLevel": "4",
             "kpiWeight": 0,
             "kpiExplain": "产出影响1",
             "kpiStand": [
               {
-                "id": "pcy041001",
+                "id": "59",
                 "kpiStand_name": "平台试运行进度按计划进行，得2分"
               },
               {
-                "id": "pcy041002",
+                "id": "60",
                 "kpiStand_name": "平台试运行进度未按计划进行，得0-2分"
               }
             ]
           },
           {
-            "id": "pcy042",
+            "id": "042",
             "kpiName": "产出影响2按预期目标完成",
             "kpiLevel": "4",
             "kpiWeight": 0,
             "kpiStand": [
               {
-                "id": "pcy042001",
+                "id": "61",
                 "kpiStand_name": "平台试运行进度按计划进行，得2分"
               },
               {
-                "id": "pcy042002",
+                "id": "62",
                 "kpiStand_name": "平台试运行进度未按计划进行，得0-2分"
               }
             ]
           },
           {
-            "id": "pcy043",
+            "id": "043",
             "kpiName": "产出影响3成本控制较为有效",
             "kpiLevel": "4",
             "kpiWeight": 0,
             "kpiStand": [
               {
-                "id": "pcy043001",
+                "id": "63",
                 "kpiStand_name": "平台试运行进度按计划进行，得2分"
               },
               {
-                "id": "pcy043002",
+                "id": "64",
                 "kpiStand_name": "平台试运行进度未按计划进行，得0-2分"
               }
             ]
           },
           {
-            "id": "pcy044",
+            "id": "044",
             "kpiName": "产出影响4欠缺相关支撑资料",
             "kpiLevel": "4",
             "kpiWeight": 0,
             "kpiStand": [
               {
-                "id": "pcy044001",
+                "id": "65",
                 "kpiStand_name": "平台试运行进度按计划进行，得2分"
               },
               {
-                "id": "pcy044002",
+                "id": "66",
                 "kpiStand_name": "平台试运行进度未按计划进行，得0-2分"
               }
             ]
           },
           {
-            "id": "pcy045",
+            "id": "045",
             "kpiName": "产出影响5促进经济发展",
             "kpiLevel": "4",
             "kpiWeight": 0,
             "kpiStand": [
               {
-                "id": "pcy045001",
+                "id": "67",
                 "kpiStand_name": "平台试运行进度按计划进行，得2分"
               },
               {
-                "id": "pcy045002",
+                "id": "68",
                 "kpiStand_name": "平台试运行进度未按计划进行，得0-2分"
               }
             ]
@@ -424,82 +424,82 @@
     "id": "13",
     "next_kpi_list":[
         {
-          "id": "pcy061",
+          "id": "061",
           "kpiName": "经济效益1平台正式运行进度",
           "kpiLevel": "4",
           "kpiWeight": 0,
           "kpiExplain": "",
           "kpiStand": [
             {
-              "id": "pcy061001",
+              "id": "69",
               "kpiStand_name": "平台试运行进度按计划进行，得2分"
             },
             {
-              "id": "pcy061002",
+              "id": "70",
               "kpiStand_name": "平台试运行进度未按计划进行，得0-2分"
             }
           ]
         },
         {
-          "id": "pcy062",
+          "id": "062",
           "kpiName": "经济效益2",
           "kpiLevel": "4",
           "kpiWeight": 0,
           "kpiStand": [
             {
-              "id": "pcy062001",
+              "id": "71",
               "kpiStand_name": "平台试运行进度按计划进行，得2分"
             },
             {
-              "id": "pcy012002",
+              "id": "72",
               "kpiStand_name": "平台试运行进度未按计划进行，得0-2分"
             }
           ]
         },
         {
-          "id": "pcy063",
+          "id": "063",
           "kpiName": "经济效益3",
           "kpiLevel": "4",
           "kpiWeight": 0,
           "kpiStand": [
             {
-              "id": "pcy063001",
+              "id": "73",
               "kpiStand_name": "平台试运行进度按计划进行，得2分"
             },
             {
-              "id": "pcy063002",
+              "id": "74",
               "kpiStand_name": "平台试运行进度未按计划进行，得0-2分"
             }
           ]
         },
         {
-          "id": "pcy064",
+          "id": "064",
           "kpiName": "经济效益4",
           "kpiLevel": "4",
           "kpiWeight": 0,
           "kpiStand": [
             {
-              "id": "pcy064001",
+              "id": "75",
               "kpiStand_name": "平台试运行进度按计划进行，得2分"
             },
             {
-              "id": "pcy064002",
+              "id": "76",
               "kpiStand_name": "平台试运行进度未按计划进行，得0-2分"
             }
           ]
         },
         {
-          "id": "pcy065",
+          "id": "065",
           "kpiName": "经济效益5",
           "kpiLevel": "4",
           "kpiWeight": 0,
           "kpiStand": [
             {
-              "id": "pcy065001",
+              "id": "77",
               "kpiStand_name": "平台试运行进度按计划进行，得2分"
             },
             {
-              "id": "pcy065002",
+              "id": "78",
               "kpiStand_name": "平台试运行进度未按计划进行，得0-2分"
             }
           ]
@@ -510,66 +510,66 @@
     "id": "14",
     "next_kpi_list": [
         {
-          "id": "pcy071",
+          "id": "071",
           "kpiName": "社会效益1",
           "kpiLevel": "4",
           "kpiWeight": 0,
           "kpiExplain": "",
           "kpiStand": [
             {
-              "id": "pcy071001",
+              "id": "79",
               "kpiStand_name": "平台试运行进度按计划进行，得2分"
             },
             {
-              "id": "pcy071002",
+              "id": "90",
               "kpiStand_name": "平台试运行进度未按计划进行，得0-2分"
             }
           ]
         },
         {
-          "id": "pcy072",
+          "id": "072",
           "kpiName": "社会效益2",
           "kpiLevel": "4",
           "kpiWeight": 0,
           "kpiStand": [
             {
-              "id": "pcy072001",
+              "id": "91",
               "kpiStand_name": "平台试运行进度按计划进行，得2分"
             },
             {
-              "id": "pcy072002",
+              "id": "92",
               "kpiStand_name": "平台试运行进度未按计划进行，得0-2分"
             }
           ]
         },
         {
-          "id": "pcy073",
+          "id": "073",
           "kpiName": "社会效益3",
           "kpiLevel": "4",
           "kpiWeight": 0,
           "kpiStand": [
             {
-              "id": "pcy073001",
+              "id": "93",
               "kpiStand_name": "平台试运行进度按计划进行，得2分"
             },
             {
-              "id": "pcy073002",
+              "id": "94",
               "kpiStand_name": "平台试运行进度未按计划进行，得0-2分"
             }
           ]
         },
         {
-          "id": "pcy074",
+          "id": "074",
           "kpiName": "社会效益4",
           "kpiLevel": "4",
           "kpiWeight": 0,
           "kpiStand": [
             {
-              "id": "pcy074001",
+              "id": "95",
               "kpiStand_name": "平台试运行进度按计划进行，得2分"
             },
             {
-              "id": "pcy074002",
+              "id": "96",
               "kpiStand_name": "平台试运行进度未按计划进行，得0-2分"
             }
           ]
@@ -580,34 +580,34 @@
     "id": "15",
     "next_kpi_list":[
         {
-          "id": "pcy081",
+          "id": "081",
           "kpiName": "项目影响1",
           "kpiLevel": "4",
           "kpiWeight": 0,
           "kpiExplain": "",
           "kpiStand": [
             {
-              "id": "pcy081001",
+              "id": "97",
               "kpiStand_name": "平台试运行进度按计划进行，得2分"
             },
             {
-              "id": "pcy081002",
+              "id": "98",
               "kpiStand_name": "平台试运行进度未按计划进行，得0-2分"
             }
           ]
         },
         {
-          "id": "pcy082",
+          "id": "082",
           "kpiName": "项目影响2",
           "kpiLevel": "4",
           "kpiWeight": 0,
           "kpiStand": [
             {
-              "id": "pcy082001",
+              "id": "99",
               "kpiStand_name": "平台试运行进度按计划进行，得2分"
             },
             {
-              "id": "pcy082002",
+              "id": "100",
               "kpiStand_name": "平台试运行进度未按计划进行，得0-2分"
             }
           ]
@@ -618,34 +618,34 @@
     "id": "16",
     "next_kpi_list": [
         {
-          "id": "pcy091",
+          "id": "091",
           "kpiName": "教师的满意度",
           "kpiLevel": "4",
           "kpiWeight": 0,
           "kpiExplain": "",
           "kpiStand": [
             {
-              "id": "pcy091001",
+              "id": "101",
               "kpiStand_name": "平台试运行进度按计划进行，得2分"
             },
             {
-              "id": "pcy091002",
+              "id": "102",
               "kpiStand_name": "平台试运行进度未按计划进行，得0-2分"
             }
           ]
         },
         {
-          "id": "pcy092",
+          "id": "092",
           "kpiName": "公司员工的满意度",
           "kpiLevel": "4",
           "kpiWeight": 0,
           "kpiStand": [
             {
-              "id": "pcy092001",
+              "id": "103",
               "kpiStand_name": "平台试运行进度按计划进行，得2分"
             },
             {
-              "id": "pcy092002",
+              "id": "104",
               "kpiStand_name": "平台试运行进度未按计划进行，得0-2分"
             }
           ]
@@ -656,34 +656,34 @@
     "id": "17",
     "next_kpi_list":[
       {
-        "id": "pcy081",
+        "id": "081",
         "kpiName": "项目影响1",
         "kpiLevel": "4",
         "kpiWeight": 0,
         "kpiExplain": "",
         "kpiStand": [
           {
-            "id": "pcy081001",
+            "id": "105",
             "kpiStand_name": "平台试运行进度按计划进行，得2分"
           },
           {
-            "id": "pcy081002",
+            "id": "106",
             "kpiStand_name": "平台试运行进度未按计划进行，得0-2分"
           }
         ]
       },
       {
-        "id": "pcy082",
+        "id": "082",
         "kpiName": "项目影响2",
         "kpiLevel": "4",
         "kpiWeight": 0,
         "kpiStand": [
           {
-            "id": "pcy082001",
+            "id": "107",
             "kpiStand_name": "平台试运行进度按计划进行，得2分"
           },
           {
-            "id": "pcy082002",
+            "id": "108",
             "kpiStand_name": "平台试运行进度未按计划进行，得0-2分"
           }
         ]

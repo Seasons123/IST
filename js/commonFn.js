@@ -78,7 +78,7 @@ var commonFn = {
                 }else{
                     $('#dialogContent').dialog('open').html("");
                     var htmlDialog = "";
-                    //1.使用本地json数据start
+                    /*//1.使用本地json数据start
                     var len = map.length;
                     for(var i=0; i<len; i++){
                         if(id == map[i].id){
@@ -91,8 +91,8 @@ var commonFn = {
                             }
                         }
                     }
-                    //1.使用本地json数据end
-                    /*//2.使用本地服务器数据start
+                    //1.使用本地json数据end*/
+                    //2.使用本地服务器数据start
                     kpiObjectNextGlobal = map;
                     for(var m=0; m < kpiObjectNextGlobal.length; m++){//末级指标评分标准
                         htmlDialog += '<p style="width:300px;">' +
@@ -100,7 +100,7 @@ var commonFn = {
                             '<input type="radio" class="nextKPISelect" id="'+ kpiObjectNextGlobal[m].id + '" name="'+ id +'" value="' + m + '" onclick="commonFn.changeNextKPISelect(this.name,this.value)" />' +
                             '</p>';
                     }
-                    //2.使用本地服务器数据end*/
+                    //2.使用本地服务器数据end
                     $('#dialogContent').append(htmlDialog);
                 }
             }
@@ -225,11 +225,15 @@ var commonFn = {
         $(".serial").each(function(){
             var weightDomID = $(this).prev().prev().prev().children().attr("id");
             var standardDomID= $(this).prev().prev().children().attr("id");
-            var kpi_id = weightDomID.split("colWeight")[0];
+            var kpi_id = parseInt(weightDomID.split("colWeight")[0]); //微服务版接口定义，kpi的id是int类型
             var taskAPI = {};
-            taskAPI["id"] = "";
-            taskAPI["orderNum"] = $(this).html();
-            taskAPI["evalObject"] = { //这个对象值上流页面带过来的信息
+            taskAPI["createBy"] = "101";
+            taskAPI["createDate"] = "2018-11-12T02:31:18.019+0000";
+            taskAPI["lastModifiedBy"] = "101";
+            taskAPI["lastModifiedDate"] = "2018-11-12T02:31:18.019+0000";
+            taskAPI["lastModifiedVersion"] = 0;
+            taskAPI["orderNum"] = parseInt($(this).html());
+            taskAPI["evalObject"] = { //这个对象值是上流页面带过来的信息
                 "id":1,
                 "lastModifiedVersion":0
             };
@@ -250,6 +254,10 @@ var commonFn = {
             dataType: 'json',
             data: JSON.stringify(saveTaskKpiDataArray),
             contentType: "application/json; charset=utf-8",
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
             async: false,
             success: function (map) {
                 if(map.message){
@@ -258,8 +266,8 @@ var commonFn = {
                     /*commonFn.refresh();*/
                     $('#editBtn').linkbutton('disable');
                     $('#confirmBtn').linkbutton('disable');
-                    commonFn.setReadonly();
-                    commonFn.setEditCellColor(false);
+                    //commonFn.setReadonly();
+                    //commonFn.setEditCellColor(false);
                     $.messager.alert('信息', '提交成功', 'info');
                 }
             }
