@@ -5,6 +5,7 @@ var levelNum;
 var kpiLevelName = ["一级指标","二级指标","三级指标","四级指标","五级指标","六级指标","七级指标","八级指标","九级指标","十级指标"];
 var htmlTableBody = '<tr>';
 var kpiObjectNextGlobal;
+var saveTaskKpiDataArrayResponse;
 
 TablecommonFn = {
 
@@ -12,7 +13,7 @@ TablecommonFn = {
         //总共的列数为：指标级次数levelNum+5
         var html = '<tr>';
         for(var i=0; i < levelNum + 1; i++){
-            html += '<th id="colName'+ (i+1) +'" class="aa" width="100px" >' + kpiLevelName[i] + '</th>';
+            html += '<th id="colName'+ (i+1) +'" class="aa" width="" >' + kpiLevelName[i] + '</th>';
         }
         html += '<th id="colWeight" class="aa" width="100px" >分数</th>';
         html += '<th id="colStander" class="aa" width="500px" id="003" colspan="5">评分标准</th>';
@@ -235,6 +236,7 @@ var getInfo = function(){
                 $.messager.alert('错误', map.message, 'error');
             }else{
                 TablecommonFn.initTable(map);
+                commonFn.refresh();
             }
         }
     });

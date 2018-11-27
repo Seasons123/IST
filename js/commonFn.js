@@ -223,29 +223,39 @@ var commonFn = {
     submitSaveTaskKpi : function(){
         var saveTaskKpiDataArray = [];
         $(".serial").each(function(){
+            var order_num = parseInt($(this).html());
             var weightDomID = $(this).prev().prev().prev().children().attr("id");
             var standardDomID= $(this).prev().prev().children().attr("id");
             var kpi_id = parseInt(weightDomID.split("colWeight")[0]); //微服务版接口定义，kpi的id是int类型
-            var taskAPI = {};
-            taskAPI["createBy"] = "101";
-            taskAPI["createDate"] = "2018-11-12T02:31:18.019+0000";
-            taskAPI["lastModifiedBy"] = "101";
-            taskAPI["lastModifiedDate"] = "2018-11-12T02:31:18.019+0000";
-            taskAPI["lastModifiedVersion"] = 0;
-            taskAPI["orderNum"] = parseInt($(this).html());
-            taskAPI["evalObject"] = { //这个对象值是上流页面带过来的信息
-                "id":1,
-                "lastModifiedVersion":0
-            };
-            taskAPI["kpi"] = {
-                "id":kpi_id,
-                "lastModifiedVersion":0 //执行第一次保存时lastModifiedVersion默认传值0
-            };
-            taskAPI["kpiWeight"] = $('#' + weightDomID).val();
-            taskAPI["kpiStandard"] = $('#' + standardDomID).val();
-            taskAPI["remark"] = "";
-            saveTaskKpiDataArray.push(taskAPI);
-
+            if(!isNaN(kpi_id )){
+                var taskAPI = {};
+                for(var i=0; i<saveTaskKpiDataArrayResponse.length; i++){
+                    if(saveTaskKpiDataArrayResponse[i].orderNum == order_num){
+                        taskAPI["id"] = saveTaskKpiDataArrayResponse[i].id;
+                        taskAPI["lastModifiedVersion"] = saveTaskKpiDataArrayResponse[i].lastModifiedVersion;
+                    }
+                }
+                if( ! taskAPI["lastModifiedVersion"]){
+                    taskAPI["lastModifiedVersion"] = 0;
+                }
+                taskAPI["createBy"] = "101";
+                taskAPI["createDate"] = "2018-11-12T02:31:18.019+0000";
+                taskAPI["lastModifiedBy"] = "101";
+                taskAPI["lastModifiedDate"] = "2018-11-12T02:31:18.019+0000";
+                taskAPI["orderNum"] = parseInt($(this).html());
+                taskAPI["evalObject"] = { //这个对象值是上流页面带过来的信息
+                    "id":1,
+                    "lastModifiedVersion":0
+                };
+                taskAPI["kpi"] = {
+                    "id":kpi_id,
+                    "lastModifiedVersion":0 //执行第一次保存时lastModifiedVersion默认传值0
+                };
+                taskAPI["kpiWeight"] = $('#' + weightDomID).val();
+                taskAPI["kpiStandard"] = $('#' + standardDomID).val();
+                taskAPI["remark"] = "";
+                saveTaskKpiDataArray.push(taskAPI);
+            }
         });
         console.log(JSON.stringify(saveTaskKpiDataArray));
         $.ajax({
@@ -263,9 +273,9 @@ var commonFn = {
                 if(map.message){
                     $.messager.alert('警告', map.message, 'warning');
                 }else{
-                    /*commonFn.refresh();*/
                     $('#editBtn').linkbutton('disable');
                     $('#confirmBtn').linkbutton('disable');
+                    commonFn.refresh();
                     //commonFn.setReadonly();
                     //commonFn.setEditCellColor(false);
                     $.messager.alert('信息', '提交成功', 'info');
@@ -273,4 +283,34 @@ var commonFn = {
             }
         });
     },
+
+    /*
+    刷新页面
+    */
+    refresh: function () {
+        var data = {
+            "evalObject.id":1,
+            "sort":"orderNum,asc"
+        };
+        $.ajax({
+            type: 'get',
+            url: formUrl.saveTaskKpi,
+            dataType: 'json',
+            data:data,
+            contentType: "application/json; charset=utf-8",
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            async: false,
+            success: function (map) {
+                if(map.message){
+                    $.messager.alert('错误', map.message, 'error');
+                }else{
+                    saveTaskKpiDataArrayResponse = map;
+                    console.log(saveTaskKpiDataArrayResponse);
+                }
+            }
+        });
+    }
 };
