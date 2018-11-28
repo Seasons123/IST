@@ -64,7 +64,7 @@ var commonFn = {
         };
         $.ajax({
             type: 'get',
-            url: formUrl.queryNextKpi,
+            url: formUrl.QueryNextKpi,
             dataType: 'json',
             data:data,
             contentType: "application/json; charset=utf-8",
@@ -260,7 +260,7 @@ var commonFn = {
         console.log(JSON.stringify(saveTaskKpiDataArray));
         $.ajax({
             type: 'POST',
-            url: formUrl.saveTaskKpi,
+            url: formUrl.TaskKpi,
             dataType: 'json',
             data: JSON.stringify(saveTaskKpiDataArray),
             contentType: "application/json; charset=utf-8",
@@ -283,18 +283,18 @@ var commonFn = {
             }
         });
     },
-
     /*
     刷新页面
     */
     refresh: function () {
         var data = {
             "evalObject.id":1,
+            "fetchProperties":"*,kpi[*,parent[id,kpiName,kpiWeight,kpiLevel,kpiExplain],parentKpi1[id,kpiName,kpiWeight,kpiLevel,kpiExplain],parentKpi2[id,kpiName,kpiWeight,kpiLevel,kpiExplain],parentKpi3[id,kpiName,kpiWeight,kpiLevel,kpiExplain],parentKpi4[id,kpiName,kpiWeight,kpiLevel,kpiExplain]]",
             "sort":"orderNum,asc"
         };
         $.ajax({
             type: 'get',
-            url: formUrl.saveTaskKpi,
+            url: formUrl.TaskKpi,
             dataType: 'json',
             data:data,
             contentType: "application/json; charset=utf-8",
