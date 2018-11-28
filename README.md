@@ -29,9 +29,9 @@
 
 •DELETE（DELETE）：从服务器删除资源
 
-谓词 |URL |说明
-
-POST |{微服务}/api/{实体} |新增/修改单/多个实体
+| 谓词      | URL           | 说明 | 
+|------------|----------------|---------|
+POST   |{微服务}/api/{实体} |新增/修改单/多个实体
 
 GET  |{微服务}/api/{实体}/{id} |查询指定ID的单个实体 
 
@@ -75,22 +75,6 @@ X-Page-Number: 0
 [{"id":123,"title":"blog122","content":"this is blog content"},
 
 {"id":122,"title":"blog121","content":"this is blog content"},
-
-{"id":121,"title":"blog120","content":"this is blog content"},
-
-{"id":120,"title":"blog119","content":"this is blog content"},
-
-{"id":119,"title":"blog118","content":"this is blog content"},
-
-{"id":118,"title":"blog117","content":"this is blog content"},
-
-{"id":117,"title":"blog116","content":"this is blog content"},
-
-{"id":116,"title":"blog115","content":"this is blog content"},
-
-{"id":115,"title":"blog114","content":"this is blog content"},
-
-{"id":114,"title":"blog113","content":"this is blog content"},
 
 {"id":109,"title":"blog108","content":"this is blog content"}]
  
@@ -144,38 +128,3 @@ HTTP/1.1 4xx Bad Request
 
 }
  
-
-
- 
-
- 
-
-七、附录A：微服务URI相关的 content-path 规划
-
-元数据 metadata 
-
-UI模版 uitemplate 
-
-基础数据 basicdata 
-
-用户中心 usercenter 
-
-认证 oauth 
-
-权限 permission 
-
-组织中心 organization 
-
-应用中心 application 
-
-业务日志 bizlog 
-
-业务消息 bizmsg 
-
-工作流 workflow 
-
-管控平台 fmcp 
-
-查询报表 pqr 
-
-统一报表 ur 
