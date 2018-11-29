@@ -97,8 +97,8 @@ input.text{
     border: solid 1px #95b3d7;
 }
 
-.quantify,.grade,.remark,.member{
-    background-color: rgb(209, 238, 238);
+.name,.weight,.standard{
+    /*background-color: rgb(209, 238, 238);*/
 }
 .quantify {
     width: 69%;

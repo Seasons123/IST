@@ -23,8 +23,8 @@ var commonFn = {
     */
     editEvalKPI: function () {
         if ($('#editBtn').linkbutton('options').disabled == false) {
-            //commonFn.setEditCellColor(true);
-            //commonFn.setEdit();
+            commonFn.setEditCellColor(true);
+            commonFn.setEdit();
             $('#saveBtn').linkbutton('enable');
             $('#cancelBtn').linkbutton('enable');
             $('#confirmBtn').linkbutton('enable');
@@ -275,7 +275,7 @@ var commonFn = {
                 }else{
                     $('#editBtn').linkbutton('disable');
                     $('#confirmBtn').linkbutton('disable');
-                    commonFn.refresh();
+                    commonFn.getSaveTaskKpiDataArray();
                     //commonFn.setReadonly();
                     //commonFn.setEditCellColor(false);
                     $.messager.alert('信息', '提交成功', 'info');
@@ -284,9 +284,9 @@ var commonFn = {
         });
     },
     /*
-    刷新页面
+    刷新数据
     */
-    refresh: function () {
+    getSaveTaskKpiDataArray: function () {
         var data = {
             "evalObject.id":1,
             "fetchProperties":"*,kpi[*,parent[id,kpiName,kpiWeight,kpiLevel,kpiExplain],parentKpi1[id,kpiName,kpiWeight,kpiLevel,kpiExplain],parentKpi2[id,kpiName,kpiWeight,kpiLevel,kpiExplain],parentKpi3[id,kpiName,kpiWeight,kpiLevel,kpiExplain],parentKpi4[id,kpiName,kpiWeight,kpiLevel,kpiExplain]]",
