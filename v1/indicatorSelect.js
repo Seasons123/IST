@@ -108,7 +108,7 @@ TablecommonFn = {
                 }
             }
         }
-        //向指标对象中塞入末级指标对象，末级指标对象有finalKPI字段。
+        //向指标对象中塞入末级指标对象
         for(var i= 0; i < evalContent.length; i++) {
             indicatorObject = {
                 id: evalContent[i].id,
@@ -119,7 +119,6 @@ TablecommonFn = {
                 explain: evalContent[i].kpiExplain,
                 standard: evalContent[i].kpiStand,
                 type: evalContent[i].valueType,
-                finalKPI: []
             };
             indicatorArray.push(indicatorObject);
         }
@@ -135,14 +134,14 @@ TablecommonFn = {
                     explain: saveTaskKpiDataArrayResponse[i].kpi.kpiExplain,
                     standard: saveTaskKpiDataArrayResponse[i].kpiStandard,
                     type: saveTaskKpiDataArrayResponse[i].kpi.kpivalueType,
-                    finalKPI: []
+                    order: saveTaskKpiDataArrayResponse[i].orderNum,
                 };
                 indicatorArray.push(indicatorObject);
                 //修改父级的合并行
                 for(var j=1; j < levelNum + 1 ; j++){
                     var parentId = "parentKpi" + j ;
                     var kpi = saveTaskKpiDataArrayResponse[i].kpi;
-                    var id = kpi[parentId].id;//要修改的父级合并行的id
+                    var id = kpi[parentId].id; //要修改的父级合并行的id
                     if(parentKPIRowFix_idList.indexOf(id) == -1){
                         parentKPIRowFix_idList.push(id);
                     }
@@ -184,10 +183,11 @@ TablecommonFn = {
             var tdIndicatorName = "t" + num;
             var tdIndicatorNameTrCount = "td" + num + "trCount";
             var temp = window[tdIndicatorNameTrCount];
-            for(var j = 0; j < indicatorArray[i].rows ; j ++){
-                for (var n in data[temp]) {
+            if(indicatorArray[i].order){ //下一级选择指标渲染
+                var trOrder = indicatorArray[i].order - 1;
+                for (var n in data[trOrder]) {
                     if (n == tdIndicatorName) {
-                        data[temp][n] = {
+                        data[trOrder][n] = {
                             name: indicatorArray[i].name,
                             weight: indicatorArray[i].weight,
                             rows: indicatorArray[i].rows,
@@ -195,13 +195,31 @@ TablecommonFn = {
                             id: indicatorArray[i].id,
                             standard: indicatorArray[i].standard,
                             type: indicatorArray[i].type,
-                            finalKPI: indicatorArray[i].finalKPI
                         };
                         window[tdIndicatorNameTrCount] = window[tdIndicatorNameTrCount] + 1 ;
                         temp = window[tdIndicatorNameTrCount];
                     }
                 }
+            }else{
+                for(var j = 0; j < indicatorArray[i].rows ; j ++){
+                    for (var n in data[temp]) {
+                        if (n == tdIndicatorName) {
+                            data[temp][n] = {
+                                name: indicatorArray[i].name,
+                                weight: indicatorArray[i].weight,
+                                rows: indicatorArray[i].rows,
+                                explain: indicatorArray[i].explain,
+                                id: indicatorArray[i].id,
+                                standard: indicatorArray[i].standard,
+                                type: indicatorArray[i].type,
+                            };
+                            window[tdIndicatorNameTrCount] = window[tdIndicatorNameTrCount] + 1 ;
+                            temp = window[tdIndicatorNameTrCount];
+                        }
+                    }
+                }
             }
+
         }
         console.log(data);
         //表格左侧json数据转换end
@@ -249,7 +267,6 @@ TablecommonFn = {
             //渲染下级待选择指标内容start
             var tdKey = "t" + (tdNum+1);
             var kpiObjectFinalNext;
-            var  lastColumnCellObject;
             //拿到末级指标对象
             for (var m in item) {
                 if (m == tdKey) {
