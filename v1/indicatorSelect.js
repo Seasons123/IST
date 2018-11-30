@@ -34,15 +34,16 @@ TablecommonFn = {
         console.log(evalContent);
         //表格左侧json数据转换start
         var data = [];
-        //计算saveTaskKpiDataArrayResponse中它们的父级共几个
-        var saveTaskKpiDataArrayResponseParent = [];
+        //计算saveTaskKpiDataArrayResponse中它们的直接父级共几个
+        var saveTaskKpiDataArrayResponseParent = {};
         for(var i=0; i< saveTaskKpiDataArrayResponse.length; i++){
            var id = saveTaskKpiDataArrayResponse[i].kpi.parent.id;
-           if(saveTaskKpiDataArrayResponseParent.indexOf(id) == -1){
-                saveTaskKpiDataArrayResponseParent.push(id);
+           if(!saveTaskKpiDataArrayResponseParent[id]){
+                saveTaskKpiDataArrayResponseParent[id] = [];
             }
+            saveTaskKpiDataArrayResponseParent[id].push(id);
         }
-        var trNum = evalContent.length + saveTaskKpiDataArrayResponse.length - saveTaskKpiDataArrayResponseParent.length; //计算总行数
+        var trNum = evalContent.length + saveTaskKpiDataArrayResponse.length - commonFn.getJsonLength(saveTaskKpiDataArrayResponseParent); //计算总行数
         levelNum = parseInt(evalContent[0].kpiLevel); //一共有几级指标，不包含要设置的下级指标
         TablecommonFn.initTableHeader(levelNum);
         $("#colName" + (levelNum + 1)).css("width","200px");
@@ -137,29 +138,29 @@ TablecommonFn = {
                     order: saveTaskKpiDataArrayResponse[i].orderNum,
                 };
                 indicatorArray.push(indicatorObject);
-                //修改父级的合并行
-                for(var j=1; j < levelNum + 1 ; j++){
-                    var parentId = "parentKpi" + j ;
-                    var kpi = saveTaskKpiDataArrayResponse[i].kpi;
-                    var id = kpi[parentId].id; //要修改的父级合并行的id
-                    if(parentKPIRowFix_idList.indexOf(id) == -1){
-                        parentKPIRowFix_idList.push(id);
-                    }
-                    for(var m=0; m< indicatorArray.length; m++){
-                        if(indicatorArray[m].id == id){
-                            indicatorArray[m].rows = indicatorArray[m].rows + 1; //如果原本是两级指标，一级指标会多加2，二级指标会多加1
-                        }
-                    }
-                }
             }
         }
-        //父级合并行修复
-        for(var i=0; i<parentKPIRowFix_idList.length; i++){
-            var id = parentKPIRowFix_idList[i];
-            for(var m=0; m< indicatorArray.length; m++){
-                if(indicatorArray[m].id == id){
-                    var diff = (levelNum + 1) - indicatorArray[m].level;
-                    indicatorArray[m].rows = indicatorArray[m].rows - diff; //如果原本是三级指标，一级指标应减3，二级指标应减2，三级指标应减1
+        //修改父级的合并行
+        for(var ever in saveTaskKpiDataArrayResponseParent ) {
+            for(var i=0; i<evalContent.length; i++){
+                if(evalContent[i].id == ever){
+                    var kpi = evalContent[i];//直接父级
+                    if(saveTaskKpiDataArrayResponseParent[ever].length > 1){
+                        for(var m=0; m< indicatorArray.length; m++){
+                            if(indicatorArray[m].id == ever){
+                                indicatorArray[m].rows = indicatorArray[m].rows + saveTaskKpiDataArrayResponseParent[ever].length - 1;
+                            }
+                        }
+                        for(var j=1; j < levelNum ; j++){
+                            var parentId = "parentKpi" + j ;
+                            var id = kpi[parentId].id; //要修改的父级合并行的id
+                            for(var m=0; m< indicatorArray.length; m++){
+                                if(indicatorArray[m].id == id){
+                                    indicatorArray[m].rows = indicatorArray[m].rows + saveTaskKpiDataArrayResponseParent[ever].length - 1;
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
