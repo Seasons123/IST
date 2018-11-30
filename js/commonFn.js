@@ -129,9 +129,9 @@ var commonFn = {
         if(idFinalKPI){
             for(var i=0; i<kpiObjectNextGlobal.length; i++) {
                 if (kpiObjectNextGlobal[i].id == idFinalKPI) {
-                    var idFinalKPINew =  idFinalKPI + "num" + commonFn.random(1,100000); //有可能末级指标重复选择，保证dom元素id值唯一性
-                    var weightTextAreaIdNew =  idFinalKPI + "colWeight" + commonFn.random(1,100000);
-                    var standardTextAreaIdNew =  idFinalKPI + "colStandard" + commonFn.random(1,100000);
+                    var idFinalKPINew =  "row" + idFinalKPI + "num" + commonFn.random(1,100000); //有可能末级指标重复选择，保证dom元素id值唯一性
+                    var weightTextAreaIdNew =  "row" + idFinalKPI + "colWeight" + commonFn.random(1,100000);
+                    var standardTextAreaIdNew =  "row" + idFinalKPI + "colStandard" + commonFn.random(1,100000);
                     $('#' + idFinalKPIOld).text(kpiObjectNextGlobal[i].kpiName).attr("id", idFinalKPINew);
                     $('#' + weightTextAreaIdOld).attr("id", weightTextAreaIdNew);
                     $('#' + standardTextAreaIdOld).attr("id", standardTextAreaIdNew);
@@ -228,10 +228,11 @@ var commonFn = {
         var saveTaskKpiDataArray = [];
         $(".serial").each(function(){
             var order_num = parseInt($(this).html());
+            var nameDomID = $(this).prev().prev().prev().prev().children().val();
             var weightDomID = $(this).prev().prev().prev().children().attr("id");
             var standardDomID= $(this).prev().prev().children().attr("id");
-            var kpi_id = parseInt(weightDomID.split("colWeight")[0]); //微服务版接口定义，kpi的id是int类型
-            if(!isNaN(kpi_id )){
+            var kpi_id = parseInt(weightDomID.split("colWeight")[0].split("row")[1]); //微服务版接口定义，kpi的id是int类型
+            if(nameDomID){
                 var taskAPI = {};
                 for(var i=0; i<saveTaskKpiDataArrayResponse.length; i++){
                     if(saveTaskKpiDataArrayResponse[i].orderNum == order_num){
