@@ -1,4 +1,4 @@
-var sever = "1";
+var sever = "3";
 var formUrl = {} ;
 switch (sever){
     case  "1":

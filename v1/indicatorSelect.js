@@ -17,7 +17,7 @@ TablecommonFn = {
         }
         html += '<th id="colWeight" class="aa" width="100px" >分数</th>';
         html += '<th id="colStander" class="aa" width="300px" colspan="5">评分标准</th>';
-        html += '<th id="colOperation" class="aa" width="200px" colspan="5">操作</th>';
+        html += '<th id="colOperation" class="aa" width="250px" colspan="5">操作</th>';
         html += '<th id="colOperation" class="aa" width="10px" colspan="1" style="display:none;">序号</th>';
         html += '</tr>';
         $('#tableHeader').append(html);
@@ -45,11 +45,8 @@ TablecommonFn = {
         var trNum = evalContent.length + saveTaskKpiDataArrayResponse.length - commonFn.getJsonLength(saveTaskKpiDataArrayResponseParent); //计算总行数
         levelNum = parseInt(evalContent[0].kpiLevel); //一共有几级指标，不包含要设置的下级指标
         TablecommonFn.initTableHeader(levelNum);
-        for(var i=1; i<levelNum; i++){
-            $("#colName" + levelNum ).css("width","100px");
-        }
         $("#colName" + levelNum ).css("width","200px");
-        $("#colName" + (levelNum + 1)).css("width","200px");
+        $("#colName" + (levelNum + 1) ).css("width","200px");
         tdNum = levelNum ;
         var indicatorArray = [];
         var indicatorObject = {};
