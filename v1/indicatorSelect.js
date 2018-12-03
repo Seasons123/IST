@@ -6,7 +6,6 @@ var kpiLevelName = ["一级指标","二级指标","三级指标","四级指标",
 var htmlTableBody = '<tr>';
 var kpiObjectNextGlobal;
 var saveTaskKpiDataArrayResponse;
-var parentKPIRowFix_idList =[];
 
 TablecommonFn = {
 
@@ -17,8 +16,8 @@ TablecommonFn = {
             html += '<th id="colName'+ (i+1) +'" class="aa" width="" >' + kpiLevelName[i] + '</th>';
         }
         html += '<th id="colWeight" class="aa" width="100px" >分数</th>';
-        html += '<th id="colStander" class="aa" width="500px" colspan="5">评分标准</th>';
-        html += '<th id="colOperation" class="aa" width="400px" colspan="5">操作</th>';
+        html += '<th id="colStander" class="aa" width="300px" colspan="5">评分标准</th>';
+        html += '<th id="colOperation" class="aa" width="200px" colspan="5">操作</th>';
         html += '<th id="colOperation" class="aa" width="10px" colspan="1" style="display:none;">序号</th>';
         html += '</tr>';
         $('#tableHeader').append(html);
@@ -46,6 +45,10 @@ TablecommonFn = {
         var trNum = evalContent.length + saveTaskKpiDataArrayResponse.length - commonFn.getJsonLength(saveTaskKpiDataArrayResponseParent); //计算总行数
         levelNum = parseInt(evalContent[0].kpiLevel); //一共有几级指标，不包含要设置的下级指标
         TablecommonFn.initTableHeader(levelNum);
+        for(var i=1; i<levelNum; i++){
+            $("#colName" + levelNum ).css("width","100px");
+        }
+        $("#colName" + levelNum ).css("width","200px");
         $("#colName" + (levelNum + 1)).css("width","200px");
         tdNum = levelNum ;
         var indicatorArray = [];
@@ -293,7 +296,11 @@ TablecommonFn = {
             htmlTableBody += '<td class="ee '+ kpiObjectFinal.id +'Operation" colspan="5">' +
                 '<a href="#" class="easyui-linkbutton" iconCls="icon-edit" id="editBtn" onclick="commonFn.editContent()">修改</a>&nbsp;' +
                 '<a href="#" class="easyui-linkbutton" iconCls="icon-add" id="addBtn" onclick="commonFn.addTableRow(this)">增加</a>&nbsp;' +
-                //'<a href="#" class="easyui-linkbutton" iconCls="icon-remove" id="removeBtn" onclick="commonFn.removeTableRow(this)">删除</a>' +
+
+/*
+20181203任务 如何控制在每个末级的第一个下级指标，无删除按钮；其它下级指标，有删除按钮 ？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？
+*/
+                '<a href="#" class="easyui-linkbutton" iconCls="icon-remove" id="removeBtn" onclick="commonFn.removeTableRow(this)">删除</a>' +
                 '</td>';//最后一列操作列
             htmlTableBody += '<td class="serial" colspan="1" style="display:none;"></td>';//序号列
             htmlTableBody += '</tr>';

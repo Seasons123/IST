@@ -1,11 +1,11 @@
-var sever = "3";
+var sever = "1";
 var formUrl = {} ;
 switch (sever){
     case  "1":
         formUrl = {
             "KpiConfig": '../data/target.json',
             "QueryNextKpi": '../data/nextKpi.json',
-            "TaskKpi": '../data/saveTaskKpi.json'
+            "TaskKpi": '../data/saveTaskKpiResponse.json'
         };
         break;
     case  "2":
