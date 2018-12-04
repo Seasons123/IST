@@ -16,9 +16,7 @@ var commonFn = {
             return value1 - value2;
         }
     },
-    /*
-     * 产生随机整数
-     */
+    /*产生随机整数*/
     random: function (lower, upper) {
         return Math.floor(Math.random() * (upper - lower)) + lower;
     },
@@ -163,7 +161,7 @@ var commonFn = {
         //新增一行start
         var trHTML = "<tr>";
         trHTML += '<td class="cc '+ id +'Name'+ (levelNum+1) +'"><textarea id="row' + id + 'colName'+ (levelNum + 1) +'num'+ commonFn.random(1,100000) +'" class="easyui-validatebox name" required="true" ></textarea>&nbsp;' +  //名称列
-            '<a href="#" class="easyui-linkbutton l-btn l-btn-small" iconcls="icon-select" id="'+ id  +'num'+ commonFn.random(1,100000) +'" onclick="commonFn.showNextKPITree(this.id)" group>' +
+            '<a href="#" class="easyui-linkbutton l-btn l-btn-small" iconcls="icon-select" id="'+ id  +'num'+ commonFn.random(1,100000) +'" onclick="commonFn.showNextKPITree(this.id);return false;" group>' +
             '  <span class="l-btn-left l-btn-icon-left"><span class="l-btn-text l-btn-empty">&nbsp;</span><span class="l-btn-icon icon-select">&nbsp;</span></span>' +
             '</a>' +
             '</td>';
@@ -171,13 +169,13 @@ var commonFn = {
         trHTML += '<td class="aa '+ id + 'Standard" colspan="5"><textarea id="row' + id + 'colStandard'+ commonFn.random(1,100000) +'" class="easyui-validatebox standard" required="true" onchange="" ></textarea></td>';//评分标准列
 
         trHTML += '<td class="ee '+ id +'Operation" colspan="5">' +
-            '<a href="#" class="easyui-linkbutton l-btn l-btn-small" iconcls="icon-edit" id="editBtn" onclick="commonFn.editContent()" group>' +
+            '<a href="#" class="easyui-linkbutton l-btn l-btn-small" iconcls="icon-edit" onclick="commonFn.editContent()" group>' +
             '  <span class="l-btn-left l-btn-icon-left"><span class="l-btn-text">修改</span><span class="l-btn-icon icon-edit">&nbsp;</span></span>' +
             '</a>' +
-            '<a href="#" class="easyui-linkbutton l-btn l-btn-small" iconcls="icon-add" id="addBtn" onclick="commonFn.addTableRow(this)" group>' +
+            '<a href="#" class="easyui-linkbutton l-btn l-btn-small" iconcls="icon-add" onclick="commonFn.addTableRow(this)" group>' +
             '  <span class="l-btn-left l-btn-icon-left"><span class="l-btn-text">增加</span><span class="l-btn-icon icon-add">&nbsp;</span></span>' +
             '</a>' +
-            '<a href="#" class="easyui-linkbutton l-btn l-btn-small" iconcls="icon-remove" id="removeBtn" onclick="commonFn.removeTableRow(this)" group>' +
+            '<a href="#" class="easyui-linkbutton l-btn l-btn-small" iconcls="icon-remove" onclick="commonFn.removeTableRow(this)" group>' +
             '  <span class="l-btn-left l-btn-icon-left"><span class="l-btn-text">删除</span><span class="l-btn-icon icon-remove">&nbsp;</span></span>' +
             '</a>' +
             '</td>';//最后一列操作列
@@ -285,11 +283,8 @@ var commonFn = {
                 if(map.message){
                     $.messager.alert('警告', map.message, 'warning');
                 }else{
-                    $('#editBtn').linkbutton('disable');
-                    $('#confirmBtn').linkbutton('disable');
                     commonFn.getSaveTaskKpiDataArray();
-                    //commonFn.setReadonly();
-                    //commonFn.setEditCellColor(false);
+                    commonFn.setReadonly();
                     $.messager.alert('信息', '提交成功', 'info');
                 }
             }
@@ -328,17 +323,20 @@ var commonFn = {
     setReadonly:function() {
         $('#select_table input:text[id!=createName]').attr("disabled", "disabled");
         $('#select_table textarea').attr("disabled", "disabled");
-        $('.radioButton').attr("disabled", "disabled");
         $('.name').attr("disabled", "disabled").css("background-color", "#D1EEEE");
         $('.weight').attr("disabled", "disabled").css("background-color", "#D1EEEE");
         $('.standard').attr("disabled", "disabled").css("background-color", "#D1EEEE");
+        $(".radioButton").attr("disabled","disabled");
+
     },
     setEdit: function() {
         $('#select_table input:text[id!=createName]').removeAttr("disabled");
         $('#select_table textarea').removeAttr("disabled");
-        $('.radioButton ').removeClass("l-btn-disabled").removeAttr("disabled");
         $('.name').removeAttr("disabled").css("background-color", "#FFFFFF");
         $('.weight').removeAttr("disabled").css("background-color", "#FFFFFF");
         $('.standard').removeAttr("disabled").css("background-color", "#FFFFFF");
+        //重新赋值onclick以解决禁用easyui的按钮控件再启用时失效问题
+        $(".radioButton").removeAttr("disabled").removeClass("l-btn-disabled").removeAttr("href").attr("onclick","commonFn.showNextKPITree(this.id);return false;");
     }
+
 };

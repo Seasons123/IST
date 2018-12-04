@@ -276,7 +276,7 @@ TablecommonFn = {
             }
             if(kpiObjectFinalNext.id){
                 htmlTableBody += '<td class="cc '+ kpiObjectFinal.id +'Name'+ (levelNum+1) +'"><textarea id="row' + kpiObjectFinalNext.id + 'colName'+ (levelNum + 1) +'num'+ commonFn.random(1,100000) +'" class="easyui-validatebox name" required="true" >'+ kpiObjectFinalNext.name +'</textarea>&nbsp;' +  //名称列
-                    '<a href="#" class="easyui-linkbutton radioButton" iconCls="icon-select" id="'+ kpiObjectFinal.id  +'num'+ commonFn.random(1,100000) +'" onclick="commonFn.showNextKPITree(this.id)" ></a>' +
+                    '<a href="#" class="easyui-linkbutton radioButton" iconCls="icon-select" id="'+ kpiObjectFinal.id  +'num'+ commonFn.random(1,100000) +'" onclick="commonFn.showNextKPITree(this.id);return false;" ></a>' +
                     '</td>';
                 htmlTableBody += '<td class="cc '+ kpiObjectFinal.id +'Weight"><textarea id="row' + kpiObjectFinalNext.id + 'colWeight'+ commonFn.random(1,100000) +'" class="easyui-validatebox weight" required="true" onchange="" >'+ kpiObjectFinalNext.weight +'</textarea></td>';//权重列
                 htmlTableBody += '<td class="aa '+ kpiObjectFinal.id +'Standard" colspan="5"><textarea id="row' + kpiObjectFinalNext.id + 'colStandard'+ commonFn.random(1,100000) +'" class="easyui-validatebox standard" required="true" onchange="" >'+ kpiObjectFinalNext.standard +'</textarea></td>';//评分标准列
@@ -291,9 +291,9 @@ TablecommonFn = {
             //渲染下级待选择指标内容end
 
             htmlTableBody += '<td class="ee '+ kpiObjectFinal.id +'Operation" colspan="5">' +
-                '<a href="#" class="easyui-linkbutton" iconCls="icon-edit" id="editBtn" onclick="commonFn.editContent()">修改</a>&nbsp;' +
-                '<a href="#" class="easyui-linkbutton" iconCls="icon-add" id="addBtn" onclick="commonFn.addTableRow(this)">增加</a>&nbsp;' +
-                '<a href="#" class="easyui-linkbutton" iconCls="icon-remove" id="removeBtn" onclick="commonFn.removeTableRow(this)">删除</a>' +
+                '<a href="#" class="easyui-linkbutton" iconCls="icon-edit" onclick="commonFn.editContent()">修改</a>&nbsp;' +
+                '<a href="#" class="easyui-linkbutton" iconCls="icon-add" onclick="commonFn.addTableRow(this)">增加</a>&nbsp;' +
+                '<a href="#" class="easyui-linkbutton" iconCls="icon-remove" onclick="commonFn.removeTableRow(this)">删除</a>' +
                 '</td>';//最后一列操作列
             htmlTableBody += '<td class="serial" colspan="1" style="display:none;"></td>';//序号列
             htmlTableBody += '</tr>';
@@ -312,7 +312,7 @@ var getInfo = function(){
     };
     $.ajax({
         type: 'get',
-        url: formUrl.KpiConfig,
+        url: 'http://10.15.1.34:8081/df-pe/api/KpiConfig?',
         dataType: 'json',
         data:data,
         contentType: "application/json; charset=utf-8",
