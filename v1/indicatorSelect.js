@@ -291,9 +291,9 @@ TablecommonFn = {
             //渲染下级待选择指标内容end
 
             htmlTableBody += '<td class="ee '+ kpiObjectFinal.id +'Operation" colspan="5">' +
-                '<a href="#" class="easyui-linkbutton" iconCls="icon-edit" onclick="commonFn.editContent()">修改</a>&nbsp;' +
-                '<a href="#" class="easyui-linkbutton" iconCls="icon-add" onclick="commonFn.addTableRow(this)">增加</a>&nbsp;' +
-                '<a href="#" class="easyui-linkbutton" iconCls="icon-remove" onclick="commonFn.removeTableRow(this)">删除</a>' +
+                '<a href="#" class="easyui-linkbutton editButton" iconCls="icon-edit" onclick="commonFn.editContent();return false;">修改</a>&nbsp;' +
+                '<a href="#" class="easyui-linkbutton addButton" iconCls="icon-add" onclick="commonFn.addTableRow(this);return false;">增加</a>&nbsp;' +
+                '<a href="#" class="easyui-linkbutton removeButton" iconCls="icon-remove" onclick="commonFn.removeTableRow(this);return false;">删除</a>' +
                 '</td>';//最后一列操作列
             htmlTableBody += '<td class="serial" colspan="1" style="display:none;"></td>';//序号列
             htmlTableBody += '</tr>';
