@@ -27,12 +27,19 @@ var commonFn = {
     */
     editEvalKPI: function () {
         if ($('#editBtn').linkbutton('options').disabled == false) {
-            commonFn.setEditCellColor(true);
             commonFn.setEdit();
             $('#saveBtn').linkbutton('enable');
             $('#cancelBtn').linkbutton('enable');
             $('#confirmBtn').linkbutton('enable');
             $('#editBtn').linkbutton('disable');
+        }
+    },
+    //样式控制
+    cssStyleControl: function(data){
+        if(data.length == 0){
+            commonFn.setEdit();
+        }else{
+            commonFn.setReadonly();
         }
     },
     /**
@@ -317,5 +324,21 @@ var commonFn = {
                 }
             }
         });
+    },
+    setReadonly:function() {
+        $('#select_table input:text[id!=createName]').attr("disabled", "disabled");
+        $('#select_table textarea').attr("disabled", "disabled");
+        $('.radioButton').attr("disabled", "disabled");
+        $('.name').attr("disabled", "disabled").css("background-color", "#D1EEEE");
+        $('.weight').attr("disabled", "disabled").css("background-color", "#D1EEEE");
+        $('.standard').attr("disabled", "disabled").css("background-color", "#D1EEEE");
+    },
+    setEdit: function() {
+        $('#select_table input:text[id!=createName]').removeAttr("disabled");
+        $('#select_table textarea').removeAttr("disabled");
+        $('.radioButton ').removeClass("l-btn-disabled").removeAttr("disabled");
+        $('.name').removeAttr("disabled").css("background-color", "#FFFFFF");
+        $('.weight').removeAttr("disabled").css("background-color", "#FFFFFF");
+        $('.standard').removeAttr("disabled").css("background-color", "#FFFFFF");
     }
 };

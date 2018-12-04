@@ -98,7 +98,7 @@ input.text{
 }
 
 .name,.weight,.standard{
-    /*background-color: rgb(209, 238, 238);*/
+    background-color: rgb(209, 238, 238);
 }
 .quantify {
     width: 69%;
