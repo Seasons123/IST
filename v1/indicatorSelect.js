@@ -312,7 +312,7 @@ var getInfo = function(){
     };
     $.ajax({
         type: 'get',
-        url: 'http://10.15.1.34:8081/df-pe/api/KpiConfig?',
+        url: formUrl.KpiConfig,
         dataType: 'json',
         data:data,
         contentType: "application/json; charset=utf-8",
