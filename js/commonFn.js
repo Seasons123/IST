@@ -231,6 +231,19 @@ var commonFn = {
      */
     submitSaveTaskKpi : function(){
         var saveTaskKpiDataArray = [];
+        //把之前数据库中的数据进行逻辑删除
+        for(var i=0; i<saveTaskKpiDataArrayResponse.length; i++){
+            var taskAPI = {};
+            taskAPI["lastModifiedVersion"] = 0;
+            taskAPI["createBy"] = "101";
+            taskAPI["createDate"] = "2018-11-12T02:31:18.019+0000";
+            taskAPI["lastModifiedBy"] = "101";
+            taskAPI["lastModifiedDate"] = "2018-11-12T02:31:18.019+0000";
+            taskAPI["id"] = saveTaskKpiDataArrayResponse[i].id; //请求参数中有id代表修改操作，无id代表新增操作
+            taskAPI["dataStatus"] = "del";
+            saveTaskKpiDataArray.push(taskAPI);
+        }
+        //要保存到数据库中的所有数据
         $(".serial").each(function(){
             var order_num = parseInt($(this).html());
             var nameDomID = $(this).prev().prev().prev().prev().children().val();
@@ -239,31 +252,24 @@ var commonFn = {
             var kpi_id = parseInt(weightDomID.split("colWeight")[0].split("row")[1]); //微服务版接口定义，kpi的id是int类型
             if(nameDomID){
                 var taskAPI = {};
-                for(var i=0; i<saveTaskKpiDataArrayResponse.length; i++){
-                    if(saveTaskKpiDataArrayResponse[i].orderNum == order_num){
-                        taskAPI["id"] = saveTaskKpiDataArrayResponse[i].id;
-                        taskAPI["lastModifiedVersion"] = saveTaskKpiDataArrayResponse[i].lastModifiedVersion;
-                    }
-                }
-                if( ! taskAPI["lastModifiedVersion"]){
-                    taskAPI["lastModifiedVersion"] = 0;
-                }
+                taskAPI["lastModifiedVersion"] = 0;
                 taskAPI["createBy"] = "101";
                 taskAPI["createDate"] = "2018-11-12T02:31:18.019+0000";
                 taskAPI["lastModifiedBy"] = "101";
                 taskAPI["lastModifiedDate"] = "2018-11-12T02:31:18.019+0000";
-                taskAPI["orderNum"] = parseInt($(this).html());
+                taskAPI["orderNum"] = order_num;
                 taskAPI["evalObject"] = { //这个对象值是上流页面带过来的信息
                     "id":1,
                     "lastModifiedVersion":0
                 };
                 taskAPI["kpi"] = {
                     "id":kpi_id,
-                    "lastModifiedVersion":0 //执行第一次保存时lastModifiedVersion默认传值0
+                    "lastModifiedVersion":0
                 };
                 taskAPI["kpiWeight"] = $('#' + weightDomID).val();
                 taskAPI["kpiStandard"] = $('#' + standardDomID).val();
                 taskAPI["remark"] = "";
+                taskAPI["dataStatus"] = "new";
                 saveTaskKpiDataArray.push(taskAPI);
             }
         });
@@ -296,11 +302,12 @@ var commonFn = {
     getSaveTaskKpiDataArray: function () {
         var data = {
             "evalObject.id":1,
+            "dataStatus":"new",
             "fetchProperties":"*,kpi[*,parent[id,kpiName,kpiWeight,kpiLevel,kpiExplain],parentKpi1[id,kpiName,kpiWeight,kpiLevel,kpiExplain],parentKpi2[id,kpiName,kpiWeight,kpiLevel,kpiExplain],parentKpi3[id,kpiName,kpiWeight,kpiLevel,kpiExplain],parentKpi4[id,kpiName,kpiWeight,kpiLevel,kpiExplain]]",
             "sort":"orderNum,asc"
         };
         $.ajax({
-            type: 'get',
+            type: 'GET',
             url: formUrl.TaskKpi,
             dataType: 'json',
             data:data,
@@ -345,5 +352,4 @@ var commonFn = {
         $(".addButton").removeAttr("disabled").removeClass("l-btn-disabled").removeAttr("href").attr("onclick","commonFn.addTableRow(this);return false;");
         $(".removeButton").removeAttr("disabled").removeClass("l-btn-disabled").removeAttr("href").attr("onclick","commonFn.removeTableRow(this);return false;");
     }
-
 };
