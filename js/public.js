@@ -4,7 +4,7 @@ var dataMode = 1; //0为使用本地模拟json数据，1为使用服务器数据
 //内网服务器 http://10.15.1.34:8081
 var serverUrl = "http://10.15.1.34:8081";
 var functionCollection = {
-    "KpiConfig":  ['../data/target.json', "/df-pe/api/KpiConfig?",],
+    "KpiConfig":  ['../data/target.json', "/df-pe/api/KpiConfig?"],
     "QueryNextKpi":['../data/nextKpi.json', '/df-pe/api/Kpi?'],
     "TaskKpi": ['../data/saveTaskKpiResponse.json', '/df-pe/api/TaskKpi?']
 };
