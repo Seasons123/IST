@@ -20,9 +20,7 @@ var commonFn = {
     random: function (lower, upper) {
         return Math.floor(Math.random() * (upper - lower)) + lower;
     },
-    /**
-    * 修改指标选择信息
-    */
+    /*修改指标选择信息*/
     editEvalKPI: function () {
         if ($('#editBtn').linkbutton('options').disabled == false) {
             commonFn.setEdit();
@@ -40,9 +38,7 @@ var commonFn = {
             commonFn.setReadonly();
         }
     },
-    /**
-     * 显示下一级待选择末级指标树
-     */
+    /*显示下一级待选择末级指标树*/
     showNextKPITree : function(value){
         var id = value.split("num")[0];
         var idNameTextArea = $("#" + value).prev().attr("id");
@@ -226,9 +222,7 @@ var commonFn = {
             $(this).html(i++);
         })
     },
-    /**
-     * 提交指标选择信息
-     */
+    /*提交指标选择信息*/
     submitSaveTaskKpi : function(){
         var saveTaskKpiDataArray = [];
         //把之前数据库中的数据进行逻辑删除
@@ -296,9 +290,7 @@ var commonFn = {
             }
         });
     },
-    /*
-    刷新数据
-    */
+    /*刷新数据*/
     getSaveTaskKpiDataArray: function () {
         var data = {
             "evalObject.id":1,
