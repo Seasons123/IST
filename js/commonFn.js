@@ -196,25 +196,47 @@ var commonFn = {
     },
     removeTableRow: function(that){
         var id = that.parentNode.className.split(" ")[1].split("Operation")[0];//当前末级指标的父级id
-        $.messager.confirm('Confirm','确认删除?',function(r){
-            if (r){
-                //删除该行
-                that.parentNode.parentNode.remove();
-                //修改父级的合并行
-                var rowspanOld = $("#"+ id + "Name"+ levelNum).attr("rowspan");
-                $("#"+ id + "Name"+ levelNum).attr("rowspan",parseInt(rowspanOld)-1);
-                for(var i=0 ;i<evalContent.length; i++){
-                    if(evalContent[i].id == id){
-                        for(var j=1; j<levelNum; j++){
-                            var parentId = "parentKpi" + j ;
-                            var old = $("#"+ evalContent[i][parentId].id + "Name" + j).attr("rowspan");
-                            $("#"+ evalContent[i][parentId].id + "Name" + j).attr("rowspan",parseInt(old)-1);
+        //如果删除的末级行只剩最后一行，只是清空数据不操作，并给出最小删除行的控制提示
+        var rowspanOld = parseInt($("#"+ id + "Name"+ levelNum).attr("rowspan"));//目前直接父级的合并行
+        if(rowspanOld == 1){
+            $.messager.alert('警告', "最后一行无法删除", 'warning');
+        }else{
+            $.messager.confirm('Confirm','确认删除?',function(r){
+                if (r){
+                    var missing=[];
+                    //保存该行
+                    var deletedTR = that.parentNode.parentNode;
+                    var TRCollection = deletedTR.children;
+                    for(var i=0; i<TRCollection.length - 5; i++){
+                        missing.push(TRCollection[i]);//保存删除第一行后下一行缺失的列
+                    }
+                    //保存下一行
+                    var deletedTRNext = deletedTR.nextElementSibling;//至少两行的情况下，该行缺失的是：所有父级
+                    //删除该行
+                    deletedTR.remove();
+                    //如果删除的是第一行，把下一行补齐
+                    if(TRCollection.length == (levelNum + 5)){ //总共的列数为：指标级次数levelNum+5
+                        //把下一行的缺失列补齐
+                        for(var m=missing.length - 1; m>=0; m--){
+                            deletedTRNext.insertBefore(missing[m],deletedTRNext.children[0]);
                         }
                     }
+                    //修改父级的合并行
+                    var rowspanOld = $("#"+ id + "Name"+ levelNum).attr("rowspan");
+                    $("#"+ id + "Name"+ levelNum).attr("rowspan",parseInt(rowspanOld)-1);
+                    for(var i=0 ;i<evalContent.length; i++){
+                        if(evalContent[i].id == id){
+                            for(var j=1; j<levelNum; j++){
+                                var parentId = "parentKpi" + j ;
+                                var old = $("#"+ evalContent[i][parentId].id + "Name" + j).attr("rowspan");
+                                $("#"+ evalContent[i][parentId].id + "Name" + j).attr("rowspan",parseInt(old)-1);
+                            }
+                        }
+                    }
+                    commonFn.initSerial();//序列号重排
                 }
-                commonFn.initSerial();//序列号重排
-            }
-        });
+            });
+        }
     },
     initSerial: function(){
         var i = 1;
