@@ -338,6 +338,10 @@ var commonFn = {
                     $.messager.alert('错误', map.message, 'error');
                 }else{
                     saveTaskKpiDataArrayResponse = map;
+                    //后台传来的orderNum只能保证大小顺序，不能保证连续和从1排
+                    for(var i=0; i<saveTaskKpiDataArrayResponse.length ; i++){
+                        saveTaskKpiDataArrayResponse[i].orderNum = i+1;
+                    }
                     console.log(saveTaskKpiDataArrayResponse);
                 }
             }
