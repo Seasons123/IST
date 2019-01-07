@@ -196,6 +196,21 @@ var commonFn = {
     },
     removeTableRow: function(that){
         var id = that.parentNode.className.split(" ")[1].split("Operation")[0];//当前末级指标的父级id
+        var parentKpi;
+        var parentKpiChildrenArray =[];
+        var tdNumOfDeletedRow;
+        //找到其父级
+        for(var i=0;i<evalContent.length;i++){
+            if(evalContent[i].id == id){
+                parentKpi = evalContent[i].parent;
+            }
+        }
+        //找到parentKpi所有的孩子，注意按顺序，依次存入数组parentKpiChildrenArray
+        for(var i=0;i<evalContent.length;i++){
+            if(evalContent[i].parent.id == parentKpi.id){
+                parentKpiChildrenArray.push(evalContent[i]);
+            }
+        }
         //如果删除的末级行只剩最后一行，只是清空数据不操作，并给出最小删除行的控制提示
         var rowspanOld = parseInt($("#"+ id + "Name"+ levelNum).attr("rowspan"));//目前直接父级的合并行
         if(rowspanOld == 1){
@@ -214,8 +229,14 @@ var commonFn = {
                     var deletedTRNext = deletedTR.nextElementSibling;//至少两行的情况下，该行缺失的是：所有父级
                     //删除该行
                     deletedTR.remove();
-                    //如果删除的是第一行，把下一行补齐
-                    if(TRCollection.length == (levelNum + 5)){ //总共的列数为：指标级次数levelNum+5
+                    //如果删除的是第一行，把下一行补齐**********************************************************20181222如何判断删除的是第一行
+                    //计算第一行总共的列数
+                    if(parentKpiChildrenArray[0].id == id){
+                        tdNumOfDeletedRow = levelNum+5; //总共的列数为：指标级次数levelNum+5
+                    }else{
+                        tdNumOfDeletedRow = levelNum+4; //总共的列数为：指标级次数levelNum+4
+                    }
+                    if(TRCollection.length == tdNumOfDeletedRow){
                         //把下一行的缺失列补齐
                         for(var m=missing.length - 1; m>=0; m--){
                             deletedTRNext.insertBefore(missing[m],deletedTRNext.children[0]);
@@ -256,7 +277,7 @@ var commonFn = {
             taskAPI["lastModifiedBy"] = "101";
             taskAPI["lastModifiedDate"] = "2018-11-12T02:31:18.019+0000";
             taskAPI["id"] = saveTaskKpiDataArrayResponse[i].id; //请求参数中有id代表修改操作，无id代表新增操作
-            taskAPI["dataStatus"] = "del";
+            taskAPI["isValid"] = 0;
             saveTaskKpiDataArray.push(taskAPI);
         }
         //要保存到数据库中的所有数据
@@ -285,7 +306,7 @@ var commonFn = {
                 taskAPI["kpiWeight"] = $('#' + weightDomID).val();
                 taskAPI["kpiStandard"] = $('#' + standardDomID).val();
                 taskAPI["remark"] = "";
-                taskAPI["dataStatus"] = "new";
+                taskAPI["isValid"] = 1;
                 saveTaskKpiDataArray.push(taskAPI);
             }
         });
@@ -316,7 +337,7 @@ var commonFn = {
     getSaveTaskKpiDataArray: function () {
         var data = {
             "evalObject.id":1,
-            "dataStatus":"new",
+            "isValid":1,
             "fetchProperties":"*,kpi[*,parent[id,kpiName,kpiWeight,kpiLevel,kpiExplain],parentKpi1[id,kpiName,kpiWeight,kpiLevel,kpiExplain],parentKpi2[id,kpiName,kpiWeight,kpiLevel,kpiExplain],parentKpi3[id,kpiName,kpiWeight,kpiLevel,kpiExplain],parentKpi4[id,kpiName,kpiWeight,kpiLevel,kpiExplain]]",
             "sort":"orderNum,asc",
             "page":0,

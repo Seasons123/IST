@@ -1,5 +1,5 @@
 //走网关用端口8081，直接走后台服务用端口8000
-var sever = "0";
+var sever = "2";
 var formUrl = {} ;
 switch (sever){
     case "0":
@@ -18,9 +18,9 @@ switch (sever){
         break;
     case  "2":
         formUrl = {
-            "KpiConfig": ' http://10.15.1.34:8081/df-peeval/api/KpiConfig?',
-            "QueryNextKpi": 'http://10.15.1.34:8081/df-peeval/api/Kpi?',
-            "TaskKpi": 'http://10.15.1.34:8081/df-peeval/api/TaskKpi?'
+            "KpiConfig": 'http://10.15.1.34:8081/df-pe/api/KpiConfig?',
+            "QueryNextKpi": 'http://10.15.1.34:8081/df-pe/api/Kpi?',
+            "TaskKpi": 'http://10.15.1.34:8081/df-pe/api/TaskKpi?'
         };
         break;
     case  "3":
