@@ -299,6 +299,10 @@ var commonFn = {
                     "id":1,
                     "lastModifiedVersion":0
                 };
+                taskAPI["evalTask"] = { //这个对象值是上流页面带过来的信息
+                    "id":1,
+                    "lastModifiedVersion":0
+                };
                 taskAPI["kpi"] = {
                     "id":kpi_id,
                     "lastModifiedVersion":0
@@ -337,6 +341,7 @@ var commonFn = {
     getSaveTaskKpiDataArray: function () {
         var data = {
             "evalObject.id":1,
+            "evalTask.id":1,
             "isValid":1,
             "fetchProperties":"*,kpi[*,parent[id,kpiName,kpiWeight,kpiLevel,kpiExplain],parentKpi1[id,kpiName,kpiWeight,kpiLevel,kpiExplain],parentKpi2[id,kpiName,kpiWeight,kpiLevel,kpiExplain],parentKpi3[id,kpiName,kpiWeight,kpiLevel,kpiExplain],parentKpi4[id,kpiName,kpiWeight,kpiLevel,kpiExplain]]",
             "sort":"orderNum,asc",
